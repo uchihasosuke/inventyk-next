@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, User, Smartphone, MessageSquare, FileText } from 'lucide-react'; // Added User, Smartphone, MessageSquare, FileText
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -18,11 +18,17 @@ export default function ContactPage() {
     "use server";
     const name = formData.get('name');
     const email = formData.get('email');
+    const phone = formData.get('phone');
     const subject = formData.get('subject');
     const message = formData.get('message');
-    console.log("Form Submitted:", { name, email, subject, message });
-    // Here you would typically send this data to a backend or email service
-    // For now, we'll just log it. A toast message could be shown on client.
+    
+    console.log("Contact Form Submitted:", { name, email, phone, subject, message });
+    // Here you would typically send this data to a backend or email service,
+    // or store it in Firebase Firestore/Realtime DB.
+    // For example: await db.collection('contacts').add({ name, email, phone, subject, message, submittedAt: new Date() });
+
+    // A toast message could be triggered on the client-side after this server action completes.
+    // This requires more setup with form state management (e.g. react-hook-form or custom state).
   }
 
   return (
@@ -37,24 +43,30 @@ export default function ContactPage() {
       <div className="grid md:grid-cols-2 gap-12">
         <Card className="shadow-xl">
           <CardHeader>
-            <CardTitle className="text-2xl text-primary">Send us a Message</CardTitle>
+            <CardTitle className="text-2xl text-primary flex items-center">
+              <MessageSquare className="w-7 h-7 mr-3 text-accent" /> Send us a Message
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <form action={handleSubmit} className="space-y-6">
               <div>
-                <Label htmlFor="name">Full Name</Label>
+                <Label htmlFor="name" className="flex items-center"><User className="w-4 h-4 mr-2 text-primary/70" />Full Name</Label>
                 <Input type="text" id="name" name="name" placeholder="John Doe" required className="mt-1" />
               </div>
               <div>
-                <Label htmlFor="email">Email Address</Label>
+                <Label htmlFor="email" className="flex items-center"><Mail className="w-4 h-4 mr-2 text-primary/70" />Email Address</Label>
                 <Input type="email" id="email" name="email" placeholder="john.doe@example.com" required className="mt-1" />
               </div>
               <div>
-                <Label htmlFor="subject">Subject</Label>
+                <Label htmlFor="phone" className="flex items-center"><Smartphone className="w-4 h-4 mr-2 text-primary/70" />Phone Number (Optional)</Label>
+                <Input type="tel" id="phone" name="phone" placeholder="+91 12345 67890" className="mt-1" />
+              </div>
+              <div>
+                <Label htmlFor="subject" className="flex items-center"><FileText className="w-4 h-4 mr-2 text-primary/70" />Subject</Label>
                 <Input type="text" id="subject" name="subject" placeholder="Inquiry about services" required className="mt-1" />
               </div>
               <div>
-                <Label htmlFor="message">Message</Label>
+                <Label htmlFor="message" className="flex items-center"><MessageSquare className="w-4 h-4 mr-2 text-primary/70" />Message</Label>
                 <Textarea id="message" name="message" rows={5} placeholder="Your message..." required className="mt-1" />
               </div>
               <div>
@@ -69,7 +81,9 @@ export default function ContactPage() {
         <div className="space-y-8">
           <Card className="shadow-xl">
             <CardHeader>
-              <CardTitle className="text-2xl text-primary">Our Office</CardTitle>
+              <CardTitle className="text-2xl text-primary flex items-center">
+                <MapPin className="w-7 h-7 mr-3 text-accent" /> Our Office
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <Image
