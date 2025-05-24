@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const courses = [
   {
     title: 'Python Programming Masterclass',
-    icon: Laptop, // Using Laptop as a generic icon for programming
+    icon: Laptop, 
     description: 'Comprehensive Python course covering fundamentals to advanced topics, including web development and data science.',
     imageHint: 'python code'
   },
@@ -26,7 +26,7 @@ const courses = [
   },
   {
     title: 'C++ for Systems Programming',
-    icon: Laptop, // Using Laptop
+    icon: Laptop, 
     description: 'Dive deep into C++ for high-performance computing, game development, and systems-level programming.',
     imageHint: 'c++ code'
   },
@@ -95,8 +95,8 @@ export default function TrainingPage() {
         <p className="text-lg text-foreground/80 max-w-2xl mx-auto mb-8">
           Join our programs to acquire in-demand skills and open doors to exciting career paths in the tech industry.
         </p>
-        <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-          Join Now
+        <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
+          <Link href="/pricing#contact-us-section">Join Now / Inquire</Link>
         </Button>
       </section>
     </div>

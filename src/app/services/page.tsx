@@ -1,7 +1,7 @@
 
 import type { Metadata } from 'next';
 import { ServiceCard } from '@/components/sections/ServiceCard';
-import { CloudCog, Code2, Briefcase, SearchCheck, Zap, Settings2 } from 'lucide-react'; // Added Zap, Settings2
+import { CloudCog, Code2, Briefcase, SearchCheck, Zap, Settings2 } from 'lucide-react'; 
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -23,7 +23,7 @@ const services = [
     description: 'Optimize your infrastructure with our cloud services, including migration, management, and DevOps practices for seamless operations and scalability.',
   },
   {
-    icon: Settings2, // Icon for Low-Code
+    icon: Settings2, 
     title: 'Low-Code & No-Code Solutions',
     description: 'Accelerate your digital transformation with powerful low-code and no-code platforms. We leverage tools like Firebase Studio and FlutterFlow to build and deploy applications faster.',
   },
@@ -94,8 +94,8 @@ export default function ServicesPage() {
         <p className="text-lg text-foreground/80 max-w-2xl mx-auto mb-8">
           Let's discuss your requirements and how our expertise can bring your vision to life.
         </p>
-        <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-          Request a Quote
+        <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
+          <Link href="/pricing">Request a Quote</Link>
         </Button>
       </section>
     </div>

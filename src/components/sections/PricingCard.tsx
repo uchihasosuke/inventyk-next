@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { CheckCircle } from 'lucide-react';
@@ -9,10 +10,10 @@ interface PricingCardProps {
   pricePeriod?: string;
   features: string[];
   buttonText: string;
-  buttonLink?: string;
+  buttonLink?: string; // Link for the button, if it's a direct navigation
   isFeatured?: boolean;
   buttonVariant?: "default" | "outline" | "secondary" | "ghost" | "link";
-  onButtonClick?: () => void;
+  onButtonClick?: () => void; // For custom actions like scrolling
 }
 
 export function PricingCard({
@@ -21,13 +22,19 @@ export function PricingCard({
   pricePeriod = '/month',
   features,
   buttonText,
-  buttonLink,
+  buttonLink, // Removed default to handle it based on onButtonClick presence
   isFeatured = false,
   buttonVariant = "default",
   onButtonClick,
 }: PricingCardProps) {
+  const effectiveButtonVariant = isFeatured ? "default" : (buttonVariant === "default" ? "outline" : buttonVariant);
+  const buttonClasses = isFeatured 
+    ? 'bg-accent hover:bg-accent/90 text-accent-foreground' 
+    : (effectiveButtonVariant === "outline" ? 'border-primary text-primary hover:bg-primary/10' : 'bg-primary hover:bg-primary/90 text-primary-foreground');
+
+
   return (
-    <Card className={`shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full ${isFeatured ? 'border-2 border-accent relative' : ''}`}>
+    <Card className={`shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full ${isFeatured ? 'border-2 border-accent relative' : 'border-border'}`}>
       {isFeatured && (
         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent text-accent-foreground px-3 py-1 text-sm font-semibold rounded-full shadow-md">
           Most Popular
@@ -49,16 +56,31 @@ export function PricingCard({
             </li>
           ))}
         </ul>
-        {buttonLink ? (
-          <Button asChild size="lg" className={`w-full mt-auto ${isFeatured ? 'bg-accent hover:bg-accent/90 text-accent-foreground' : 'bg-primary hover:bg-primary/90 text-primary-foreground'}`}>
+        {onButtonClick ? (
+          <Button 
+            size="lg" 
+            variant={effectiveButtonVariant}
+            className={`w-full mt-auto ${buttonClasses}`}
+            onClick={onButtonClick}
+          >
+            {buttonText}
+          </Button>
+        ) : buttonLink ? (
+          <Button asChild size="lg" variant={effectiveButtonVariant} className={`w-full mt-auto ${buttonClasses}`}>
             <Link href={buttonLink}>{buttonText}</Link>
           </Button>
         ) : (
-          <Button 
+           <Button 
             size="lg" 
-            variant={buttonVariant === "default" && !isFeatured ? "outline" : (isFeatured ? "default" : buttonVariant)} 
-            className={`w-full mt-auto ${isFeatured ? 'bg-accent hover:bg-accent/90 text-accent-foreground' : (buttonVariant === "default" ? "bg-primary hover:bg-primary/90 text-primary-foreground" : "")}`}
-            onClick={onButtonClick}
+            variant={effectiveButtonVariant}
+            className={`w-full mt-auto ${buttonClasses}`}
+            // Default action if no link and no onClick provided
+            onClick={() => {
+              const contactSection = document.getElementById('contact-us-section');
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
           >
             {buttonText}
           </Button>
