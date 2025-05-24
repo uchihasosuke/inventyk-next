@@ -15,11 +15,11 @@ export function PricingContactSection() {
         className="bg-accent hover:bg-accent/90 text-accent-foreground"
         onClick={() => {
           if (typeof window !== 'undefined') {
-            window.location.href = 'mailto:info@inventyk.com?subject=Project Inquiry';
+            window.location.href = 'mailto:inventykaipoweredsolution@gmail.com?subject=Project Inquiry';
           }
         }}
       >
-        Email Us: info@inventyk.com
+        Email Us: inventykaipoweredsolution@gmail.com
       </Button>
       <p className="text-sm text-muted-foreground mt-4">
         We'll get back to you shortly to discuss your project.
