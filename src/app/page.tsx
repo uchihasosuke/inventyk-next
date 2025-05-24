@@ -1,13 +1,13 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { CircleCheckBig, Lightbulb, Zap, Users, BriefcaseBrainCircuit } from 'lucide-react'; // Updated BrainCircuit to BriefcaseBrainCircuit for distinction if needed, or just use Briefcase for projects
+import { CircleCheckBig, Lightbulb, Zap, Users, Briefcase } from 'lucide-react'; 
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ProjectCard } from '@/components/sections/ProjectCard';
 import { TestimonialCard } from '@/components/sections/TestimonialCard';
-import { Logo } from '@/components/Logo'; // Import the Logo component
+import { Logo } from '@/components/Logo'; 
 
 // Assuming filenames like nextjs.svg, react.svg, etc.
 // Adjust paths if your filenames are different.
@@ -29,7 +29,7 @@ const projects = [
   {
     title: 'SmartLibTrack',
     description: 'SmartLibTrack is a smart library entry/exit system that uses ID scan and camera capture to track student visits in real-time.',
-    imageUrl: '/images/projects/smartlibtrack-showcase.png', // Assumed path, ensure you place the image here
+    imageUrl: '/images/projects/smartlibtrack-showcase.png', 
     imageHint: 'app login screen',
     tags: ['Next.js', 'Genkit AI', 'Tailwind CSS', 'Firebase'],
     liveLink: 'https://libtrack-agppi.vercel.app/admin/dashboard',
@@ -101,7 +101,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="py-20 md:py-32 bg-gradient-to-br from-primary/5 via-background to-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-          <div className="mb-8"> {/* Added margin-bottom for spacing */}
+          <div className="mb-8"> 
             <Logo />
           </div>
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-primary mb-6">
