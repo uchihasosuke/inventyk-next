@@ -180,22 +180,34 @@ export default function HomePage() {
               const isFunctionComponent = typeof IconToRender === 'function';
               const isAssetObject = typeof IconToRender === 'object' && IconToRender && (IconToRender as any).src;
               
-              const iconClasses = `w-10 h-10 mb-2`; // Removed tech.name specific class for accent as SVGs have own colors or take general styling
+              // Default Tailwind classes for size
+              let iconSizeClass = 'w-10 h-10'; // Default: 2.5rem / 40px
+              // Default width/height for next/image
+              let imageRenderWidth = 40;
+              let imageRenderHeight = 40;
+
+              if (tech.name === 'Python' || tech.name === 'Genkit AI') {
+                iconSizeClass = 'w-14 h-14'; // Larger: 3.5rem / 56px
+                imageRenderWidth = 56;
+                imageRenderHeight = 56;
+              }
+              
+              const finalIconDisplayClasses = `${iconSizeClass} mb-2`; // Combine size with margin for component rendering
 
               return (
                 <div key={tech.name} className="flex flex-col items-center p-4 bg-card shadow-md rounded-lg hover:shadow-xl transition-shadow">
                   {isFunctionComponent ? (
-                    <IconToRender className={iconClasses} />
+                    <IconToRender className={finalIconDisplayClasses} />
                   ) : isAssetObject ? (
                     <Image 
                       src={(IconToRender as any).src} 
                       alt={tech.name} 
-                      width={(IconToRender as any).width || 40} // Use intrinsic width or default
-                      height={(IconToRender as any).height || 40} // Use intrinsic height or default
-                      className={iconClasses}
+                      width={imageRenderWidth} 
+                      height={imageRenderHeight} 
+                      className="mb-2" // Only margin, size from width/height props
                     />
                   ) : (
-                    <div className={`${iconClasses} text-muted-foreground`} aria-label={tech.name}>?</div> // Fallback if neither
+                    <div className={`${finalIconDisplayClasses} text-muted-foreground`} aria-label={tech.name}>?</div> // Fallback if neither
                   )}
                   <p className="text-sm font-medium text-primary">{tech.name}</p>
                   <p className="text-xs text-muted-foreground">{tech.category}</p>
