@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { Linkedin, Instagram } from 'lucide-react';
+import { Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -26,6 +26,22 @@ export function Footer() {
             <Instagram className="h-6 w-6" />
           </Link>
         </div>
+
+        <div className="text-sm text-muted-foreground space-y-2 mb-6">
+          <a href="mailto:inventykaipoweredsolution@gmail.com" className="flex items-center justify-center hover:text-primary transition-colors">
+            <Mail className="h-4 w-4 mr-2" />
+            inventykaipoweredsolution@gmail.com
+          </a>
+          <a href="tel:+919226366202" className="flex items-center justify-center hover:text-primary transition-colors">
+            <Phone className="h-4 w-4 mr-2" />
+            +91 9226366202
+          </a>
+          <p className="flex items-center justify-center">
+            <MapPin className="h-4 w-4 mr-2" />
+            Solapur - 413006, India
+          </p>
+        </div>
+
         <div className="text-sm text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} Inventyk. All rights reserved.</p>
           <p className="mt-1">Innovating the Future, Together.</p>
