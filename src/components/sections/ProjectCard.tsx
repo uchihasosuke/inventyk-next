@@ -1,6 +1,5 @@
 
-import Image from 'next/image';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'; // Keep Card imports
 import { Button } from '@/components/ui/button';
 import { ExternalLink, Github } from 'lucide-react'; // Assuming GitHub for code link
 import Link from 'next/link';
@@ -9,29 +8,25 @@ import { Badge } from '@/components/ui/badge';
 interface ProjectCardProps {
   title: string;
   description: string;
-  imageUrl: string;
-  imageHint?: string;
+  videoUrl: string; // Changed from imageUrl to videoUrl
   tags: string[];
   liveLink?: string;
   codeLink?: string; // Optional link to GitHub or similar
 }
 
-export function ProjectCard({ title, description, imageUrl, imageHint, tags, liveLink, codeLink }: ProjectCardProps) {
+export function ProjectCard({ title, description, videoUrl, tags, liveLink, codeLink }: ProjectCardProps) {
   return (
-    <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden h-full">
-      <CardHeader className="p-0">
-        <Image
-          src={imageUrl}
-          alt={`Showcase of ${title}`}
-          width={600}
+    <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
+      <CardHeader className="p-0 flex items-center justify-center overflow-hidden"> {/* Added overflow-hidden */}
+        <video
+          src={videoUrl} // Use videoUrl
           height={350} // Adjusted for a more typical card image ratio
           className="object-cover w-full h-48 md:h-56" // Fixed height for consistency
-          data-ai-hint={imageHint || "project showcase"}
         />
       </CardHeader>
       <CardContent className="p-6 flex flex-col flex-grow">
         <CardTitle className="text-xl text-primary mb-2">{title}</CardTitle>
-        <CardDescription className="text-sm text-foreground/80 mb-4 flex-grow">{description}</CardDescription>
+        <CardDescription className="text-sm text-foreground/80 mb-4 flex-grow">{description}</CardDescription> {/* Added closing tag */}
         
         <div className="mb-4">
           {tags.map((tag) => (

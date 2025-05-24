@@ -1,13 +1,14 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { CircleCheckBig, Lightbulb, Zap, Users, Briefcase } from 'lucide-react'; 
+import { CircleCheckBig, Lightbulb, Zap, Users, Briefcase } from 'lucide-react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ProjectCard } from '@/components/sections/ProjectCard';
 import { TestimonialCard } from '@/components/sections/TestimonialCard';
-import { Logo } from '@/components/Logo'; 
+import { Logo } from '@/components/Logo';
+import { FadeInOnScroll } from '@/components/FadeInOnScroll';
 
 // Assuming filenames like nextjs.svg, react.svg, etc.
 // Adjust paths if your filenames are different.
@@ -29,8 +30,7 @@ const projects = [
   {
     title: 'SmartLibTrack',
     description: 'SmartLibTrack is a smart library entry/exit system that uses ID scan and camera capture to track student visits in real-time.',
-    imageUrl: '/images/projects/smartlibtrack-showcase.png', 
-    imageHint: 'app login screen',
+    videoUrl: '/images/projects/smartlibtrack.gif',
     tags: ['Next.js', 'Genkit AI', 'Tailwind CSS', 'Firebase'],
     liveLink: 'https://libtrack-agppi.vercel.app/admin/dashboard',
   },
@@ -98,10 +98,9 @@ const techStack = [
 export default function HomePage() {
   return (
     <>
-      {/* Hero Section */}
       <section className="py-20 md:py-32 bg-gradient-to-br from-primary/5 via-background to-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-          <div className="mb-8"> 
+          <div className="mb-8">
             <Logo />
           </div>
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-primary mb-6">
@@ -122,6 +121,7 @@ export default function HomePage() {
       </section>
 
       {/* Features Section */}
+      <FadeInOnScroll>
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-primary mb-12">Why Choose Inventyk?</h2>
@@ -156,8 +156,10 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      </FadeInOnScroll>
 
       {/* Our Projects Section */}
+      <FadeInOnScroll>
       <section className="py-16 bg-primary/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-primary mb-4 flex items-center justify-center">
@@ -174,8 +176,10 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      </FadeInOnScroll>
 
       {/* Technology Stack Section */}
+      <FadeInOnScroll>
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-primary mb-4 flex items-center justify-center">
@@ -191,9 +195,9 @@ export default function HomePage() {
               const isFunctionComponent = typeof IconToRender === 'function';
               const isAssetObject = typeof IconToRender === 'object' && IconToRender && (IconToRender as any).src;
               
-              const iconSizeClass = 'w-10 h-10'; 
-              const imageRenderWidth = 40; 
-              const imageRenderHeight = 40; 
+              const iconSizeClass = 'w-10 h-10';
+              const imageRenderWidth = 40;
+              const imageRenderHeight = 40;
               
               const finalIconDisplayClasses = `${iconSizeClass} mb-2`;
 
@@ -202,12 +206,12 @@ export default function HomePage() {
                   {isFunctionComponent ? (
                     <IconToRender className={finalIconDisplayClasses} />
                   ) : isAssetObject ? (
-                    <Image 
-                      src={(IconToRender as any).src} 
-                      alt={tech.name} 
-                      width={imageRenderWidth} 
-                      height={imageRenderHeight} 
-                      className="mb-2" 
+                    <Image
+                      src={(IconToRender as any).src}
+                      alt={tech.name}
+                      width={imageRenderWidth}
+                      height={imageRenderHeight}
+                      className="mb-2"
                     />
                   ) : (
                     <div className={`${finalIconDisplayClasses} text-muted-foreground`} aria-label={tech.name}>?</div>
@@ -220,8 +224,10 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      </FadeInOnScroll>
 
       {/* Testimonials Section */}
+      <FadeInOnScroll>
       <section className="py-16 bg-primary/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-primary mb-4 flex items-center justify-center">
@@ -238,6 +244,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      </FadeInOnScroll>
 
       {/* Call to Action Section */}
       <section className="py-16 bg-background">
@@ -255,3 +262,4 @@ export default function HomePage() {
   );
 }
 
+    
