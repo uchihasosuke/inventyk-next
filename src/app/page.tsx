@@ -1,14 +1,16 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { CircleCheckBig, Lightbulb, Zap, Users, Briefcase } from 'lucide-react'; 
+import { CircleCheckBig, Lightbulb, Zap, Users, BriefcaseBrainCircuit } from 'lucide-react'; // Updated BrainCircuit to BriefcaseBrainCircuit for distinction if needed, or just use Briefcase for projects
 import type { Metadata } from 'next';
-import Image from 'next/image'; 
+import Image from 'next/image';
 import Link from 'next/link';
 import { ProjectCard } from '@/components/sections/ProjectCard';
 import { TestimonialCard } from '@/components/sections/TestimonialCard';
+import { Logo } from '@/components/Logo'; // Import the Logo component
 
-// Import logos from the src/components/icons/ directory
+// Assuming filenames like nextjs.svg, react.svg, etc.
+// Adjust paths if your filenames are different.
 import NextjsLogo from '@/components/icons/nextjs.svg';
 import ReactLogo from '@/components/icons/react.svg';
 import FirebaseLogo from '@/components/icons/firebase.svg';
@@ -27,8 +29,8 @@ const projects = [
   {
     title: 'SmartLibTrack',
     description: 'SmartLibTrack is a smart library entry/exit system that uses ID scan and camera capture to track student visits in real-time.',
-    imageUrl: 'https://placehold.co/600x400.png',
-    imageHint: 'app login screen', // Updated imageHint
+    imageUrl: '/images/projects/smartlibtrack-showcase.png', // Assumed path, ensure you place the image here
+    imageHint: 'app login screen',
     tags: ['Next.js', 'Genkit AI', 'Tailwind CSS', 'Firebase'],
     liveLink: 'https://libtrack-agppi.vercel.app/admin/dashboard',
   },
@@ -98,7 +100,10 @@ export default function HomePage() {
     <>
       {/* Hero Section */}
       <section className="py-20 md:py-32 bg-gradient-to-br from-primary/5 via-background to-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+          <div className="mb-8"> {/* Added margin-bottom for spacing */}
+            <Logo />
+          </div>
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-primary mb-6">
             Innovate. Integrate. Inspire.
           </h1>
@@ -184,12 +189,11 @@ export default function HomePage() {
             {techStack.map((tech) => {
               const IconToRender = tech.icon;
               const isFunctionComponent = typeof IconToRender === 'function';
-              // Check if it's an object likely from an SVG import (asset object)
               const isAssetObject = typeof IconToRender === 'object' && IconToRender && (IconToRender as any).src;
               
-              const iconSizeClass = 'w-10 h-10'; // Default size
-              const imageRenderWidth = 40; // Default width for Image
-              const imageRenderHeight = 40; // Default height for Image
+              const iconSizeClass = 'w-10 h-10'; 
+              const imageRenderWidth = 40; 
+              const imageRenderHeight = 40; 
               
               const finalIconDisplayClasses = `${iconSizeClass} mb-2`;
 

@@ -1,7 +1,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import InventykLogoAsset from '@/components/icons/inventyk-logo.svg'; // Assuming this path is correct
+import InventykLogoAsset from '@/components/icons/inventyk-logo.svg'; // Import the SVG asset
 
 export function Logo() {
   const displayHeight = 32; // Target rendered height for the SVG logo (Tailwind h-8)
@@ -19,15 +19,11 @@ export function Logo() {
     </div>
   );
 
-  // Fallback logic for invalid asset or dimensions
-  if (
-    !asset || typeof asset.src !== 'string' ||
-    typeof asset.width !== 'number' || asset.width <= 0 ||
-    typeof asset.height !== 'number' || asset.height <= 0
-  ) {
+  // Check if the asset is valid for next/image
+  if (!asset || typeof asset.src !== 'string') {
     console.warn(
-      "InventykLogoAsset: Invalid or missing dimensions from inventyk-logo.svg import. " +
-      "Falling back to text logo. Ensure your SVG file has valid 'width' and 'height' attributes on its root <svg> tag."
+      "InventykLogoAsset: Invalid asset object or missing 'src' property. Falling back to text logo. " +
+      "Ensure inventyk-logo.svg is correctly imported and processed by Next.js asset pipeline."
     );
     return (
       <Link
@@ -35,26 +31,26 @@ export function Logo() {
         className="flex items-center hover:opacity-80 transition-opacity"
         aria-label="Inventyk - AI Powered Solution & Services, Home"
       >
-        {/* Render only the text part if SVG asset is problematic */}
         {renderName(true)}
       </Link>
     );
   }
 
-  // Calculate display width to maintain aspect ratio based on intrinsic dimensions
-  const displayWidth = Math.round((asset.width / asset.height) * displayHeight);
-
-  if (displayWidth <= 0) { // Additional guard for the calculated width
-    console.warn("InventykLogoAsset: Calculated displayWidth is invalid (<=0). Falling back to text logo.");
-    return (
-      <Link
-        href="/"
-        className="flex items-center hover:opacity-80 transition-opacity"
-        aria-label="Inventyk - AI Powered Solution & Services, Home"
-      >
-        {renderName(true)}
-      </Link>
+  let displayWidth: number;
+  if (typeof asset.width === 'number' && asset.width > 0 && typeof asset.height === 'number' && asset.height > 0) {
+    displayWidth = Math.round((asset.width / asset.height) * displayHeight);
+  } else {
+    // Fallback if SVG has no dimensions or invalid dimensions, assume a default aspect ratio (e.g., 150:40)
+    displayWidth = Math.round((150 / 40) * displayHeight); 
+    console.warn(
+      "InventykLogoAsset: Using default aspect ratio as SVG dimensions are missing or invalid in the imported asset. " +
+      "Ensure your inventyk-logo.svg file has valid 'width' and 'height' attributes on its root <svg> tag."
     );
+  }
+  
+  // Ensure displayWidth is positive, otherwise use a sensible default
+  if (displayWidth <= 0) {
+    displayWidth = displayHeight * (150/40); // Default based on aspect ratio if calculation fails
   }
 
   return (
@@ -64,12 +60,12 @@ export function Logo() {
       aria-label="Inventyk - AI Powered Solution & Services, Home"
     >
       <Image
-        src={asset.src}
+        src={asset.src} 
         alt="Inventyk Logo"
-        width={displayWidth}
+        width={displayWidth} 
         height={displayHeight}
-        className="shrink-0" // Prevent image from shrinking
-        // priority // Consider if LCP, but unlikely for a small header logo
+        className="shrink-0" 
+        priority // Consider adding priority if it's above the fold
       />
       {renderName()}
     </Link>
