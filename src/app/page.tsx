@@ -43,46 +43,32 @@ const FirebaseLogo = ({ className }: { className?: string }) => (
 const FlutterLogo = ({ className }: { className?: string }) => (
  <svg aria-label="Flutter logomark" className={className} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path d="M14.314 0L6.06 8.256l4.128 4.128L22.938 0h-8.624z" fill="#027DFD"/>
-    <path d="M14.314 9.552l-4.128 4.128L6.06 17.808l8.256 8.256h8.624l-8.624-8.624z" fill="#027DFD"/> {/* Adjusted to #027DFD from #40C4FF for a more common Flutter blue */}
+    <path d="M14.314 9.552l-4.128 4.128L6.06 17.808l8.256 8.256h8.624l-8.624-8.624z" fill="#027DFD"/>
   </svg>
 );
 
 const PythonLogo = ({ className }: { className?: string }) => (
-  <svg aria-label="Python logomark" className={className} viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
-    {/* Blue part */}
-    <path d="M120,23.4c-26.1,0-50,9.3-68.7,25.1c-2,1.7-3.8,3.4-5.6,5.3L28,71.6c0,0,0.1,0,0.1-0.1c-2.7,4.4-4.9,9.2-6.3,14.2
-      c-0.5,1.6-0.9,3.3-1.2,5c-2.1,10.3-2.1,21,0,31.3c0.3,1.7,0.7,3.3,1.2,5c1.5,5,3.6,9.8,6.3,14.2c0,0-0.1-0.1-0.1-0.1l17.6,17.6
-      c1.8,1.8,3.6,3.6,5.6,5.3c18.7,15.8,42.6,25.1,68.7,25.1s50-9.3,68.7-25.1c2-1.7,3.8-3.4,5.6-5.3l17.6-17.6c0,0,0,0,0,0
-      c2.7-4.4,4.9-9.2,6.3-14.2c0.5-1.6,0.9-3.3,1.2-5c2.1-10.3,2.1-21,0-31.3c-0.3-1.7-0.7-3.3-1.2-5c-1.5-5-3.6-9.8-6.3-14.2
-      c0,0,0,0,0,0l-17.6-17.6c-1.8-1.8-3.6-3.6-5.6-5.3C170,32.7,146.1,23.4,120,23.4z M120,41.8c7.6,0,14.2,6.6,14.2,14.2
-      s-6.6,14.2-14.2,14.2s-14.2-6.6-14.2-14.2S112.4,41.8,120,41.8z M120,198.2c-7.6,0-14.2-6.6-14.2-14.2c0-7.6,6.6-14.2,14.2-14.2
-      s14.2,6.6,14.2,14.2C134.2,191.6,127.6,198.2,120,198.2z M166.8,166.8c-21.7,12.4-48.8,12.4-73.5,0L76.4,150
-      c11.2,7.3,24.1,11.1,37.4,11.1c0.5,0,1,0,1.4-0.1l0,0h1.4c0.5,0,1,0,1.4,0.1c13.3,0,26.2-3.9,37.4-11.1L166.8,166.8z M166.8,73.2
-      l16.8,16.8c-11.2-7.3-24.1-11.1-37.4-11.1c-0.5,0-1,0-1.4,0.1h-2.9c-0.5,0-1,0-1.4-0.1c-13.3,0-26.2,3.9-37.4,11.1L86.2,73.2
-      C107.9,60.8,135.1,60.8,160,73.2H166.8z" fill="#3776AB"/>
-    {/* Yellow part */}
-    <path d="M120,23.4c26.1,0,50,9.3,68.7,25.1c2,1.7,3.8,3.4,5.6,5.3l17.6,17.6c0,0,0,0,0,0c2.7,4.4,4.9,9.2,6.3,14.2
-      c0.5,1.6,0.9,3.3,1.2,5c2.1,10.3,2.1,21,0,31.3c-0.3,1.7-0.7,3.3-1.2,5c-1.5,5-3.6,9.8-6.3,14.2c0,0,0,0,0,0L198,168.4
-      c-1.8,1.8-3.6,3.6-5.6,5.3c-18.7,15.8-42.6,25.1-68.7,25.1v-36.3c13.3,0,26.2-3.9,37.4-11.1l16.8-16.8
-      c-12.4-21.7-12.4-48.8,0-73.5l-16.8-16.8C146.1,32.7,133.3,23.4,120,23.4V23.4z M120,70.1c7.6,0,14.2-6.6,14.2-14.2
-      S127.6,41.8,120,41.8v28.3H120z M120,169.9v28.3c7.6,0,14.2-6.6,14.2-14.2C134.2,176.4,127.6,169.9,120,169.9z" fill="#FFD43B"/>
+  <svg aria-label="Python logomark" className={className} viewBox="0 0 240 240" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+      <g transform="translate(0.000000, 1.000000)"> {/* Adjusted transform to fit viewBox if necessary, or keep original */}
+        {/* Yellow Part */}
+        <path d="M120,23.4 C146.1,23.4 170,32.7 188.7,48.4 C190.7,50.2 192.5,51.9 194.4,53.7 L212,71.4 C212,71.4 211.9,71.5 211.9,71.5 C214.6,75.9 216.7,80.7 218.2,85.7 C218.7,87.3 219.1,88.9 219.4,90.6 C221.4,100.9 221.4,111.6 219.4,121.9 C219.1,123.6 218.7,125.2 218.2,126.8 C216.7,131.8 214.6,136.6 211.9,141 C211.9,141.1 212,141.1 212,141.1 L194.4,158.8 C192.5,160.6 190.7,162.4 188.7,164.2 C170,179.9 146.1,189.2 120,189.2 C93.9,189.2 70,179.9 51.3,164.2 C49.3,162.4 47.5,160.6 45.6,158.8 L28,141.1 C28,141.1 28.1,141.1 28.1,141 C25.4,136.6 23.3,131.8 21.8,126.8 C21.3,125.2 20.9,123.6 20.6,121.9 C18.6,111.6 18.6,100.9 20.6,90.6 C20.9,88.9 21.3,87.3 21.8,85.7 C23.3,80.7 25.4,75.9 28.1,71.5 C28.1,71.5 28,71.4 28,71.4 L45.6,53.7 C47.5,51.9 49.3,50.2 51.3,48.4 C70,32.7 93.9,23.4 120,23.4 L120,23.4 Z M120,169.9 C112.4,169.9 105.8,176.6 105.8,184.2 C105.8,191.7 112.4,198.4 120,198.4 C127.6,198.4 134.2,191.7 134.2,184.2 C134.2,176.6 127.6,169.9 120,169.9 L120,169.9 Z M120,133.5 C133.3,133.5 146.2,129.7 157.4,122.4 L174.2,105.6 C162,93.4 135,93.4 120,105.6 C120,105.6 120,105.6 120,105.6 L102.6,122.4 C115.1,129.9 120,133.5 120,133.5 L120,133.5 Z" fill="#FFD43B"/>
+        {/* Blue Part */}
+        <path d="M120,23.4 C93.9,23.4 70,32.7 51.3,48.4 C49.3,50.2 47.5,51.9 45.6,53.7 L28,71.4 C28,71.4 28.1,71.5 28.1,71.5 C25.4,75.9 23.3,80.7 21.8,85.7 C21.3,87.3 20.9,88.9 20.6,90.6 C18.6,100.9 18.6,111.6 20.6,121.9 C20.9,123.6 21.3,125.2 21.8,126.8 C23.3,131.8 25.4,136.6 28.1,141 C28.1,141.1 28,141.1 28,141.1 L45.6,158.8 C47.5,160.6 49.3,162.4 51.3,164.2 C70,179.9 93.9,189.2 120,189.2 L120,189.2 L120,152.9 C107.9,152.9 93.8,142.6 86.2,126.8 L69.4,108.5 C81.7,96.2 108.6,96.2 120,108.5 C120,108.5 120,108.5 120,108.5 L120,70.1 C120,70.1 112.4,63.5 105.8,63.5 C98.2,63.5 91.7,70.1 91.7,77.7 C91.7,85.3 98.2,91.9 105.8,91.9 L105.8,91.9 L120,91.9 L120,23.4 L120,23.4 Z" fill="#3776AB"/>
+      </g>
+    </g>
   </svg>
 );
 
 const JavaLogo = ({ className }: { className?: string }) => (
   <svg aria-label="Java logomark" className={className} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    {/* Cup body */}
-    <path d="M5.636 17.014C4.01 15.483 3 13.362 3 11c0-4.411 3.589-8 8-8s8 3.589 8 8c0 2.362-1.01 4.483-2.636 6.014A7.952 7.952 0 0 1 19 11c0-3.86-3.14-7-7-7s-7 3.14-7 7c0 1.426.428 2.756 1.168 3.865" fill="#5382A1"/>
-    {/* Coffee */}
-    <path d="M6.036 10.752c.15-.608.371-1.189.652-1.737A7.963 7.963 0 0 1 11 5a7.96 7.96 0 0 1 4.313 4.015c.28.548.502 1.129.651 1.737" fill="#EDB571"/>
-    {/* Handle */}
-    <path d="M19 11a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1v-5h1z" fill="#5382A1"/>
-    {/* Saucer */}
-    <path d="M2 18h18a1 1 0 0 1 0 2H2a1 1 0 0 1 0-2z" fill="#B0BEC5"/>
-    {/* Steam */}
-    <path d="M9.5 2a.5.5 0 0 1 .5.5V5a.5.5 0 0 1-1 0V2.5a.5.5 0 0 1 .5-.5z" fill="#F89820"/>
-    <path d="M12.5 1a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V1.5a.5.5 0 0 1 .5-.5z" fill="#F89820"/>
-    <path d="M15.5 2a.5.5 0 0 1 .5.5V5a.5.5 0 0 1-1 0V2.5a.5.5 0 0 1 .5-.5z" fill="#F89820"/>
+    <path d="M5.636 17.014C4.01 15.483 3 13.362 3 11c0-4.411 3.589-8 8-8s8 3.589 8 8c0 2.362-1.01 4.483-2.636 6.014A7.952 7.952 0 0 1 19 11c0-3.86-3.14-7-7-7s-7 3.14-7 7c0 1.426.428 2.756 1.168 3.865" fill="#5382A1"/> {/* Blue-Grey Cup */}
+    <path d="M6.036 10.752c.15-.608.371-1.189.652-1.737A7.963 7.963 0 0 1 11 5a7.96 7.96 0 0 1 4.313 4.015c.28.548.502 1.129.651 1.737" fill="#EDB571"/> {/* Light Brown Coffee */}
+    <path d="M19 11a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1v-5h1z" fill="#5382A1"/> {/* Blue-Grey Handle */}
+    <path d="M2 18h18a1 1 0 0 1 0 2H2a1 1 0 0 1 0-2z" fill="#B0BEC5"/> {/* Light Grey Saucer */}
+    <path d="M9.5 2a.5.5 0 0 1 .5.5V5a.5.5 0 0 1-1 0V2.5a.5.5 0 0 1 .5-.5z" fill="#F89820"/> {/* Orange Steam */}
+    <path d="M12.5 1a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V1.5a.5.5 0 0 1 .5-.5z" fill="#F89820"/> {/* Orange Steam */}
+    <path d="M15.5 2a.5.5 0 0 1 .5.5V5a.5.5 0 0 1-1 0V2.5a.5.5 0 0 1 .5-.5z" fill="#F89820"/> {/* Orange Steam */}
   </svg>
 );
 
@@ -147,13 +133,13 @@ const testimonials = [
 const techStack = [
   { name: 'Next.js', icon: NextjsLogo, category: 'Frontend & Full-Stack' },
   { name: 'React', icon: ReactLogo, category: 'Frontend' },
-  { name: 'Genkit AI', icon: BrainCircuit, category: 'Artificial Intelligence' }, // Lucide icon, uses text-accent
+  { name: 'Genkit AI', icon: BrainCircuit, category: 'Artificial Intelligence' }, 
   { name: 'Firebase', icon: FirebaseLogo, category: 'Backend & Database' },
   { name: 'FlutterFlow', icon: FlutterLogo, category: 'Low-Code Mobile' },
   { name: 'Python', icon: PythonLogo, category: 'Backend & AI' },
   { name: 'Java', icon: JavaLogo, category: 'Backend' },
   { name: 'Tailwind CSS', icon: TailwindLogo, category: 'Styling' },
-  { name: 'Cloud Platforms', icon: Cloud, category: 'Infrastructure' }, // Lucide icon, uses text-accent
+  { name: 'Cloud Platforms', icon: Cloud, category: 'Infrastructure' }, 
 ];
 
 
@@ -247,7 +233,7 @@ export default function HomePage() {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 text-center">
             {techStack.map((tech) => (
               <div key={tech.name} className="flex flex-col items-center p-4 bg-card shadow-md rounded-lg hover:shadow-xl transition-shadow">
-                <tech.icon className="w-10 h-10 mb-2 text-accent" /> {/* text-accent will apply to Lucide icons, ignored by SVGs with hardcoded fills */}
+                <tech.icon className="w-10 h-10 mb-2" /> {/* Removed text-accent for SVGs with embedded colors */}
                 <p className="text-sm font-medium text-primary">{tech.name}</p>
                 <p className="text-xs text-muted-foreground">{tech.category}</p>
               </div>
@@ -289,3 +275,5 @@ export default function HomePage() {
     </>
   );
 }
+
+    
