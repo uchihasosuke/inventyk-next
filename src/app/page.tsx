@@ -8,13 +8,15 @@ import Link from 'next/link';
 import { ProjectCard } from '@/components/sections/ProjectCard';
 import { TestimonialCard } from '@/components/sections/TestimonialCard';
 
-// Import logos from the new components/icons directory
-import { NextjsLogo } from '@/components/icons/NextjsLogo';
-import { ReactLogo } from '@/components/icons/ReactLogo';
-import { FirebaseLogo } from '@/components/icons/FirebaseLogo';
-import { FlutterLogo } from '@/components/icons/FlutterLogo';
-import { PythonLogo } from '@/components/icons/PythonLogo';
-import { NodejsLogo } from '@/components/icons/NodejsLogo';
+// Import logos from the .svg files in components/icons directory
+// Assuming filenames like nextjs.svg, react.svg, etc.
+// Adjust paths if your filenames are different.
+import NextjsLogo from '@/components/icons/nextjs.svg';
+import ReactLogo from '@/components/icons/react.svg';
+import FirebaseLogo from '@/components/icons/firebase.svg';
+import FlutterLogo from '@/components/icons/flutter.svg';
+import PythonLogo from '@/components/icons/python.svg';
+import NodejsLogo from '@/components/icons/nodejs.svg';
 
 
 export const metadata: Metadata = {
@@ -79,7 +81,7 @@ const techStack = [
   { name: 'Node.js', icon: NodejsLogo, category: 'Backend' },
   { name: 'Python', icon: PythonLogo, category: 'Backend & AI' },
   { name: 'Flutter', icon: FlutterLogo, category: 'Mobile Development' },
-  { name: 'Genkit AI', icon: BrainCircuit, category: 'Artificial Intelligence' },
+  { name: 'Genkit AI', icon: BrainCircuit, category: 'Artificial Intelligence' }, // Lucide icon for Genkit
   { name: 'Firebase', icon: FirebaseLogo, category: 'Backend & Database' },
 ];
 
@@ -174,7 +176,7 @@ export default function HomePage() {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 text-center">
             {techStack.map((tech) => (
               <div key={tech.name} className="flex flex-col items-center p-4 bg-card shadow-md rounded-lg hover:shadow-xl transition-shadow">
-                <tech.icon className="w-10 h-10 mb-2" />
+                <tech.icon className={`w-10 h-10 mb-2 ${tech.name === 'Genkit AI' ? 'text-accent' : ''}`} />
                 <p className="text-sm font-medium text-primary">{tech.name}</p>
                 <p className="text-xs text-muted-foreground">{tech.category}</p>
               </div>
