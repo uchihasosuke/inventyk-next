@@ -1,10 +1,13 @@
 
+'use client'; // Add this directive
+
 import type { Metadata } from 'next';
 import { PricingCard } from '@/components/sections/PricingCard';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Package, Briefcase, Building } from 'lucide-react';
 
+// Metadata can still be exported from a Client Component, Next.js handles it.
 export const metadata: Metadata = {
   title: 'Pricing Plans',
   description: 'Choose the perfect plan for your needs. Inventyk offers flexible pricing for startups, businesses, and enterprises.',
@@ -105,7 +108,11 @@ export default function PricingPage() {
         <Button 
           size="lg" 
           className="bg-accent hover:bg-accent/90 text-accent-foreground"
-          onClick={() => window.location.href = 'mailto:info@inventyk.com?subject=Project Inquiry'}
+          onClick={() => {
+            if (typeof window !== 'undefined') {
+              window.location.href = 'mailto:info@inventyk.com?subject=Project Inquiry';
+            }
+          }}
         >
           Email Us: info@inventyk.com
         </Button>
