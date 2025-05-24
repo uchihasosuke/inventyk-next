@@ -187,9 +187,9 @@ export default function HomePage() {
               let imageRenderHeight = 40;
 
               if (tech.name === 'Python' || tech.name === 'Genkit AI') {
-                iconSizeClass = 'w-14 h-14'; // Larger: 3.5rem / 56px
-                imageRenderWidth = 56;
-                imageRenderHeight = 56;
+                iconSizeClass = 'w-20 h-20'; // Larger: 5rem / 80px
+                imageRenderWidth = 80;
+                imageRenderHeight = 80;
               }
               
               const finalIconDisplayClasses = `${iconSizeClass} mb-2`; // Combine size with margin for component rendering
