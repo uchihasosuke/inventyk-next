@@ -25,11 +25,11 @@ export const metadata: Metadata = {
 
 const projects = [
   {
-    title: 'LibTrack - Library Management System',
-    description: 'An efficient library management system for tracking books, members, and loans, built with a modern tech stack for seamless administration.',
+    title: 'SmartLibTrack',
+    description: 'SmartLibTrack is a smart library entry/exit system that uses ID scan and camera capture to track student visits in real-time.',
     imageUrl: 'https://placehold.co/600x400.png',
     imageHint: 'library management system software',
-    tags: ['Next.js', 'Firebase', 'Tailwind CSS', 'ShadCN UI'],
+    tags: ['Next.js', 'Genkit AI', 'Tailwind CSS', 'Firebase'],
     liveLink: 'https://libtrack-agppi.vercel.app/admin/dashboard',
   },
   {
@@ -249,3 +249,4 @@ export default function HomePage() {
     </>
   );
 }
+
