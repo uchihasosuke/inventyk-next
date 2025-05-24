@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, Lightbulb, Zap } from 'lucide-react';
@@ -26,8 +27,8 @@ export default function HomePage() {
             <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
               <Link href="/services">Discover Our Services</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
-              <Link href="/contact">Get in Touch</Link>
+            <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
+              Get in Touch
             </Button>
           </div>
         </div>
@@ -76,8 +77,8 @@ export default function HomePage() {
           <p className="text-lg text-foreground/80 max-w-xl mx-auto mb-8">
             Let's discuss how Inventyk can help you achieve new heights of success.
           </p>
-          <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-            <Link href="/contact">Schedule a Consultation</Link>
+          <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
+            Schedule a Consultation
           </Button>
         </div>
       </section>

@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { PricingCard } from '@/components/sections/PricingCard';
 import { Button } from '@/components/ui/button';
@@ -22,7 +23,6 @@ const pricingPlans = [
       'Standard Support',
     ],
     buttonText: 'Get Started',
-    buttonLink: '/contact?plan=basic',
   },
   {
     title: 'Standard',
@@ -37,7 +37,6 @@ const pricingPlans = [
       'AI Feature Integration (1)',
     ],
     buttonText: 'Choose Standard',
-    buttonLink: '/contact?plan=standard',
     isFeatured: true,
   },
   {
@@ -54,7 +53,6 @@ const pricingPlans = [
       'Basic SEO Optimization',
     ],
     buttonText: 'Go Premium',
-    buttonLink: '/contact?plan=premium',
   },
   {
     title: 'Enterprise',
@@ -70,7 +68,6 @@ const pricingPlans = [
       'Service Level Agreements (SLAs)',
     ],
     buttonText: 'Request Quote',
-    buttonLink: '/contact?plan=enterprise',
   },
 ];
 
@@ -93,7 +90,6 @@ export default function PricingPage() {
             pricePeriod={plan.priceSuffix}
             features={plan.features}
             buttonText={plan.buttonText}
-            buttonLink={plan.buttonLink}
             isFeatured={plan.isFeatured}
           />
         ))}
@@ -104,8 +100,8 @@ export default function PricingPage() {
         <p className="text-lg text-foreground/80 max-w-2xl mx-auto mb-8">
           If your project has unique requirements, don't hesitate to reach out. We can create a tailored plan just for you.
         </p>
-        <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-          <Link href="/contact">Discuss Your Project</Link>
+        <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
+          Discuss Your Project
         </Button>
       </section>
     </div>

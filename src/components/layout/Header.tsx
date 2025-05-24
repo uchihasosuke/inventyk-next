@@ -1,3 +1,4 @@
+
 import { Logo } from '@/components/Logo';
 import { NavLink } from '@/components/layout/NavLink';
 import { Button } from '@/components/ui/button';
@@ -6,12 +7,9 @@ import { Menu } from 'lucide-react';
 
 const navItems = [
   { href: '/', label: 'Home' },
-  { href: '/about', label: 'About Us' },
   { href: '/services', label: 'Services' },
   { href: '/training', label: 'Training' },
   { href: '/pricing', label: 'Pricing' },
-  { href: '/book-appointment', label: 'Book Appointment' },
-  { href: '/contact', label: 'Contact' },
 ];
 
 export function Header() {

@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -94,8 +95,8 @@ export default function TrainingPage() {
         <p className="text-lg text-foreground/80 max-w-2xl mx-auto mb-8">
           Join our programs to acquire in-demand skills and open doors to exciting career paths in the tech industry.
         </p>
-        <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-          <Link href="/contact">Join Now</Link>
+        <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
+          Join Now
         </Button>
       </section>
     </div>
