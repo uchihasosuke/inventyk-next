@@ -1,11 +1,8 @@
-import { GeistSans as FontSans, GeistMono as FontMono } from 'next/font/google';
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
 
-export const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-geist-sans",
-});
-
-export const fontMono = FontMono({
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
-});
+// GeistSans and GeistMono from the 'geist' package are already configured
+// font objects. They directly provide .variable and .className properties.
+// The default variable names are --font-geist-sans and --font-geist-mono.
+export const fontSans = GeistSans;
+export const fontMono = GeistMono;
