@@ -1,7 +1,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, Lightbulb, Zap, Users, Briefcase } from 'lucide-react'; 
+import { CircleCheckBig, Lightbulb, Zap, Users, Briefcase } from 'lucide-react'; 
 import type { Metadata } from 'next';
 import Image from 'next/image'; 
 import Link from 'next/link';
@@ -28,7 +28,7 @@ const projects = [
     title: 'SmartLibTrack',
     description: 'SmartLibTrack is a smart library entry/exit system that uses ID scan and camera capture to track student visits in real-time.',
     imageUrl: 'https://placehold.co/600x400.png',
-    imageHint: 'library management system software',
+    imageHint: 'app login screen', // Updated imageHint
     tags: ['Next.js', 'Genkit AI', 'Tailwind CSS', 'Firebase'],
     liveLink: 'https://libtrack-agppi.vercel.app/admin/dashboard',
   },
@@ -141,7 +141,7 @@ export default function HomePage() {
             </Card>
             <Card className="text-center shadow-lg">
               <CardHeader>
-                <CheckCircle className="w-12 h-12 mx-auto text-accent mb-4" />
+                <CircleCheckBig className="w-12 h-12 mx-auto text-accent mb-4" />
                 <CardTitle className="text-primary">Client-Centric</CardTitle>
               </CardHeader>
               <CardContent>
@@ -184,11 +184,12 @@ export default function HomePage() {
             {techStack.map((tech) => {
               const IconToRender = tech.icon;
               const isFunctionComponent = typeof IconToRender === 'function';
+              // Check if it's an object likely from an SVG import (asset object)
               const isAssetObject = typeof IconToRender === 'object' && IconToRender && (IconToRender as any).src;
               
-              const iconSizeClass = 'w-10 h-10';
-              const imageRenderWidth = 40;
-              const imageRenderHeight = 40;
+              const iconSizeClass = 'w-10 h-10'; // Default size
+              const imageRenderWidth = 40; // Default width for Image
+              const imageRenderHeight = 40; // Default height for Image
               
               const finalIconDisplayClasses = `${iconSizeClass} mb-2`;
 
