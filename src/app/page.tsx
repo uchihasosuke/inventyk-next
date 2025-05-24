@@ -1,16 +1,14 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { BrainCircuit, CheckCircle, Lightbulb, Zap, Users, Briefcase } from 'lucide-react'; // Added BrainCircuit back for Genkit if SVG fails
+import { CheckCircle, Lightbulb, Zap, Users, Briefcase } from 'lucide-react'; 
 import type { Metadata } from 'next';
-import Image from 'next/image'; // Import next/image
+import Image from 'next/image'; 
 import Link from 'next/link';
 import { ProjectCard } from '@/components/sections/ProjectCard';
 import { TestimonialCard } from '@/components/sections/TestimonialCard';
 
 // Import logos from the src/components/icons/ directory
-// Assuming filenames like nextjs.svg, react.svg, etc.
-// Adjust paths if your filenames are different.
 import NextjsLogo from '@/components/icons/nextjs.svg';
 import ReactLogo from '@/components/icons/react.svg';
 import FirebaseLogo from '@/components/icons/firebase.svg';
@@ -26,6 +24,14 @@ export const metadata: Metadata = {
 };
 
 const projects = [
+  {
+    title: 'LibTrack - Library Management System',
+    description: 'An efficient library management system for tracking books, members, and loans, built with a modern tech stack for seamless administration.',
+    imageUrl: 'https://placehold.co/600x400.png',
+    imageHint: 'library management system software',
+    tags: ['Next.js', 'Firebase', 'Tailwind CSS', 'ShadCN UI'],
+    liveLink: 'https://libtrack-agppi.vercel.app/admin/dashboard',
+  },
   {
     title: 'AI-Powered E-commerce Platform',
     description: 'Developed a scalable e-commerce solution with personalized recommendations and an AI chatbot for customer support, boosting sales by 25%.',
@@ -178,11 +184,9 @@ export default function HomePage() {
             {techStack.map((tech) => {
               const IconToRender = tech.icon;
               const isFunctionComponent = typeof IconToRender === 'function';
-              // Check if it's an object with a 'src' property, common for Next.js static image imports or SVGs handled as assets
               const isAssetObject = typeof IconToRender === 'object' && IconToRender && (IconToRender as any).src;
               
-              // Consistent sizing for all icons
-              const iconSizeClass = 'w-10 h-10'; // Default: 2.5rem / 40px
+              const iconSizeClass = 'w-10 h-10';
               const imageRenderWidth = 40;
               const imageRenderHeight = 40;
               
@@ -198,11 +202,9 @@ export default function HomePage() {
                       alt={tech.name} 
                       width={imageRenderWidth} 
                       height={imageRenderHeight} 
-                      className="mb-2" // Only margin, size from width/height props
+                      className="mb-2" 
                     />
                   ) : (
-                    // Fallback if the icon type isn't recognized or if it's a Lucide icon that wasn't caught by isFunctionComponent (though it should)
-                    // This might happen if an SVG import didn't resolve as expected to a component.
                     <div className={`${finalIconDisplayClasses} text-muted-foreground`} aria-label={tech.name}>?</div>
                   )}
                   <p className="text-sm font-medium text-primary">{tech.name}</p>
@@ -247,4 +249,3 @@ export default function HomePage() {
     </>
   );
 }
-
