@@ -4,27 +4,37 @@ import Image from 'next/image';
 import InventykLogoAsset from '@/components/icons/inventyk-logo.svg'; 
 
 export function Logo() {
-  const displayHeight = 32; // Target rendered height (Tailwind h-8)
-
-  // Type assertion for the imported SVG asset
+  const displayHeight = 32; // Target rendered height for the SVG logo (Tailwind h-8)
   const asset = InventykLogoAsset as { src: string; width?: number; height?: number };
 
-  // Check if the asset is valid and has numeric width/height properties
+  // Helper function to render the name part, so it can be reused in fallback
+  const renderName = (isFallback: boolean = false) => (
+    <>
+      <span className={`font-bold text-primary ${isFallback ? '' : 'ml-2'} text-lg whitespace-nowrap`}>
+        INVENTYK
+      </span>
+      <span className="ml-1.5 text-[0.7rem] leading-none text-foreground/70 hidden sm:inline whitespace-nowrap tracking-tight">
+        AI Powered Solution & Services
+      </span>
+    </>
+  );
+
   if (
-    !asset ||
-    typeof asset.src !== 'string' ||
+    !asset || typeof asset.src !== 'string' ||
     typeof asset.width !== 'number' || asset.width <= 0 ||
     typeof asset.height !== 'number' || asset.height <= 0
   ) {
-    // Fallback: If intrinsic dimensions are not available or invalid from the SVG import.
-    // This can happen if the SVG file doesn't have width/height attributes on its root tag.
     console.warn(
-      "InventykLogoAsset: Intrinsic dimensions (width/height) not found or invalid from inventyk-logo.svg import. " +
-      "Falling back to text logo. To fix, ensure your inventyk-logo.svg file has valid 'width' and 'height' attributes on its root <svg> tag."
+      "InventykLogoAsset: Invalid or missing dimensions from inventyk-logo.svg import. " +
+      "Falling back to text logo. Ensure your SVG file has valid 'width' and 'height' attributes on its root <svg> tag."
     );
     return (
-      <Link href="/" className="flex items-center text-xl font-bold text-primary hover:opacity-80 transition-opacity" aria-label="Inventyk Home">
-        Inventyk
+      <Link 
+        href="/" 
+        className="flex items-center hover:opacity-80 transition-opacity" 
+        aria-label="Inventyk - AI Powered Solution & Services Home"
+      >
+        {renderName(true)}
       </Link>
     );
   }
@@ -35,21 +45,30 @@ export function Logo() {
   if (displayWidth <= 0) { // Additional guard for the calculated width
     console.warn("InventykLogoAsset: Calculated displayWidth is invalid (<=0). Falling back to text logo.");
     return (
-      <Link href="/" className="flex items-center text-xl font-bold text-primary hover:opacity-80 transition-opacity" aria-label="Inventyk Home">
-        Inventyk
+      <Link 
+        href="/" 
+        className="flex items-center hover:opacity-80 transition-opacity" 
+        aria-label="Inventyk - AI Powered Solution & Services Home"
+      >
+        {renderName(true)}
       </Link>
     );
   }
 
   return (
-    <Link href="/" className="flex items-center hover:opacity-80 transition-opacity" aria-label="Inventyk Home">
+    <Link
+      href="/"
+      className="flex items-center hover:opacity-80 transition-opacity"
+      aria-label="Inventyk - AI Powered Solution & Services Home"
+    >
       <Image
         src={asset.src}
-        alt="Inventyk Logo"
+        alt="Inventyk Logo" 
         width={displayWidth}
         height={displayHeight}
-        // priority={true} // Consider if LCP, but unlikely for a small header logo
+        // priority // Consider if LCP, but unlikely for a small header logo
       />
+      {renderName()}
     </Link>
   );
 }
