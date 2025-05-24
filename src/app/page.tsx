@@ -1,7 +1,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, Lightbulb, Zap, Users, Briefcase } from 'lucide-react';
+import { BrainCircuit, CheckCircle, Lightbulb, Zap, Users, Briefcase } from 'lucide-react'; // Added BrainCircuit back for Genkit if SVG fails
 import type { Metadata } from 'next';
 import Image from 'next/image'; // Import next/image
 import Link from 'next/link';
@@ -178,21 +178,15 @@ export default function HomePage() {
             {techStack.map((tech) => {
               const IconToRender = tech.icon;
               const isFunctionComponent = typeof IconToRender === 'function';
+              // Check if it's an object with a 'src' property, common for Next.js static image imports or SVGs handled as assets
               const isAssetObject = typeof IconToRender === 'object' && IconToRender && (IconToRender as any).src;
               
-              // Default Tailwind classes for size
-              let iconSizeClass = 'w-10 h-10'; // Default: 2.5rem / 40px
-              // Default width/height for next/image
-              let imageRenderWidth = 40;
-              let imageRenderHeight = 40;
-
-              if (tech.name === 'Python' || tech.name === 'Genkit AI') {
-                iconSizeClass = 'w-20 h-20'; // Larger: 5rem / 80px
-                imageRenderWidth = 80;
-                imageRenderHeight = 80;
-              }
+              // Consistent sizing for all icons
+              const iconSizeClass = 'w-10 h-10'; // Default: 2.5rem / 40px
+              const imageRenderWidth = 40;
+              const imageRenderHeight = 40;
               
-              const finalIconDisplayClasses = `${iconSizeClass} mb-2`; // Combine size with margin for component rendering
+              const finalIconDisplayClasses = `${iconSizeClass} mb-2`;
 
               return (
                 <div key={tech.name} className="flex flex-col items-center p-4 bg-card shadow-md rounded-lg hover:shadow-xl transition-shadow">
@@ -207,7 +201,9 @@ export default function HomePage() {
                       className="mb-2" // Only margin, size from width/height props
                     />
                   ) : (
-                    <div className={`${finalIconDisplayClasses} text-muted-foreground`} aria-label={tech.name}>?</div> // Fallback if neither
+                    // Fallback if the icon type isn't recognized or if it's a Lucide icon that wasn't caught by isFunctionComponent (though it should)
+                    // This might happen if an SVG import didn't resolve as expected to a component.
+                    <div className={`${finalIconDisplayClasses} text-muted-foreground`} aria-label={tech.name}>?</div>
                   )}
                   <p className="text-sm font-medium text-primary">{tech.name}</p>
                   <p className="text-xs text-muted-foreground">{tech.category}</p>
@@ -251,3 +247,4 @@ export default function HomePage() {
     </>
   );
 }
+
