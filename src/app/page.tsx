@@ -3,14 +3,13 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, Lightbulb, Zap, BrainCircuit, Users, Briefcase } from 'lucide-react';
 import type { Metadata } from 'next';
-import Image from 'next/image';
+import Image from 'next/image'; // Import next/image
 import Link from 'next/link';
 import { ProjectCard } from '@/components/sections/ProjectCard';
 import { TestimonialCard } from '@/components/sections/TestimonialCard';
 
-// Import logos from the .svg files in components/icons directory
-// Assuming filenames like nextjs.svg, react.svg, etc.
-// Adjust paths if your filenames are different.
+// Import logos from the src/components/icons/ directory
+// These are expected to be React components if SVGR works, or asset objects if it doesn't.
 import NextjsLogo from '@/components/icons/nextjs.svg';
 import ReactLogo from '@/components/icons/react.svg';
 import FirebaseLogo from '@/components/icons/firebase.svg';
@@ -81,7 +80,7 @@ const techStack = [
   { name: 'Node.js', icon: NodejsLogo, category: 'Backend' },
   { name: 'Python', icon: PythonLogo, category: 'Backend & AI' },
   { name: 'Flutter', icon: FlutterLogo, category: 'Mobile Development' },
-  { name: 'Genkit AI', icon: BrainCircuit, category: 'Artificial Intelligence' }, // Lucide icon for Genkit
+  { name: 'Genkit AI', icon: BrainCircuit, category: 'Artificial Intelligence' }, // Lucide icon
   { name: 'Firebase', icon: FirebaseLogo, category: 'Backend & Database' },
 ];
 
@@ -174,13 +173,35 @@ export default function HomePage() {
             We harness the power of modern technologies and AI to build robust, scalable, and innovative solutions.
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 text-center">
-            {techStack.map((tech) => (
-              <div key={tech.name} className="flex flex-col items-center p-4 bg-card shadow-md rounded-lg hover:shadow-xl transition-shadow">
-                <tech.icon className={`w-10 h-10 mb-2 ${tech.name === 'Genkit AI' ? 'text-accent' : ''}`} />
-                <p className="text-sm font-medium text-primary">{tech.name}</p>
-                <p className="text-xs text-muted-foreground">{tech.category}</p>
-              </div>
-            ))}
+            {techStack.map((tech) => {
+              const IconToRender = tech.icon;
+              // Lucide icons are functions. SVGR-processed SVGs should also be functions.
+              // Asset objects (fallback if SVGR fails) will have a 'src' property.
+              const isFunctionComponent = typeof IconToRender === 'function';
+              const isAssetObject = typeof IconToRender === 'object' && IconToRender && IconToRender.src;
+              
+              const iconClasses = `w-10 h-10 mb-2 ${tech.name === 'Genkit AI' ? 'text-accent' : ''}`;
+
+              return (
+                <div key={tech.name} className="flex flex-col items-center p-4 bg-card shadow-md rounded-lg hover:shadow-xl transition-shadow">
+                  {isFunctionComponent ? (
+                    <IconToRender className={iconClasses} />
+                  ) : isAssetObject ? (
+                    <Image 
+                      src={(IconToRender as any).src} 
+                      alt={tech.name} 
+                      width={(IconToRender as any).width || 40}
+                      height={(IconToRender as any).height || 40}
+                      className={iconClasses.replace('text-accent', '')} // text-accent might not apply to Image src for SVG color
+                    />
+                  ) : (
+                    <div className={iconClasses} aria-label={tech.name}>?</div> // Fallback
+                  )}
+                  <p className="text-sm font-medium text-primary">{tech.name}</p>
+                  <p className="text-xs text-muted-foreground">{tech.category}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
