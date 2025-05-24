@@ -1,7 +1,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, Lightbulb, Zap, BrainCircuit, Users, Briefcase, Cloud } from 'lucide-react';
+import { CheckCircle, Lightbulb, Zap, BrainCircuit, Users, Briefcase } from 'lucide-react'; // Removed Cloud
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -34,9 +34,9 @@ const ReactLogo = ({ className }: { className?: string }) => (
 
 const FirebaseLogo = ({ className }: { className?: string }) => (
   <svg aria-label="Firebase logomark" className={className} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M5.96347 19.8671L13.148 4.2766L10.2899 3L3 15.634L5.96347 19.8671Z" fill="#FFA000"/> {/* Orange */}
-    <path d="M13.1387 4.2766L11.6055 15.4011L18.7032 10.8508L13.1387 4.2766Z" fill="#FFCA28"/> {/* Yellow */}
-    <path d="M5.96347 19.8671L12.5066 21L11.6055 15.4011L5.96347 19.8671Z" fill="#F57F17"/> {/* Dark Orange */}
+    <path d="M5.96347 19.8671L13.148 4.2766L10.2899 3L3 15.634L5.96347 19.8671Z" fill="#FFA000"/>
+    <path d="M13.1387 4.2766L11.6055 15.4011L18.7032 10.8508L13.1387 4.2766Z" fill="#FFCA28"/>
+    <path d="M5.96347 19.8671L12.5066 21L11.6055 15.4011L5.96347 19.8671Z" fill="#F57F17"/>
   </svg>
 );
 
@@ -50,7 +50,7 @@ const FlutterLogo = ({ className }: { className?: string }) => (
 const PythonLogo = ({ className }: { className?: string }) => (
   <svg aria-label="Python logomark" className={className} viewBox="0 0 240 240" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-      <g transform="translate(0.000000, 1.000000)"> {/* Adjusted transform to fit viewBox if necessary, or keep original */}
+      <g transform="translate(0.000000, 1.000000)">
         {/* Yellow Part */}
         <path d="M120,23.4 C146.1,23.4 170,32.7 188.7,48.4 C190.7,50.2 192.5,51.9 194.4,53.7 L212,71.4 C212,71.4 211.9,71.5 211.9,71.5 C214.6,75.9 216.7,80.7 218.2,85.7 C218.7,87.3 219.1,88.9 219.4,90.6 C221.4,100.9 221.4,111.6 219.4,121.9 C219.1,123.6 218.7,125.2 218.2,126.8 C216.7,131.8 214.6,136.6 211.9,141 C211.9,141.1 212,141.1 212,141.1 L194.4,158.8 C192.5,160.6 190.7,162.4 188.7,164.2 C170,179.9 146.1,189.2 120,189.2 C93.9,189.2 70,179.9 51.3,164.2 C49.3,162.4 47.5,160.6 45.6,158.8 L28,141.1 C28,141.1 28.1,141.1 28.1,141 C25.4,136.6 23.3,131.8 21.8,126.8 C21.3,125.2 20.9,123.6 20.6,121.9 C18.6,111.6 18.6,100.9 20.6,90.6 C20.9,88.9 21.3,87.3 21.8,85.7 C23.3,80.7 25.4,75.9 28.1,71.5 C28.1,71.5 28,71.4 28,71.4 L45.6,53.7 C47.5,51.9 49.3,50.2 51.3,48.4 C70,32.7 93.9,23.4 120,23.4 L120,23.4 Z M120,169.9 C112.4,169.9 105.8,176.6 105.8,184.2 C105.8,191.7 112.4,198.4 120,198.4 C127.6,198.4 134.2,191.7 134.2,184.2 C134.2,176.6 127.6,169.9 120,169.9 L120,169.9 Z M120,133.5 C133.3,133.5 146.2,129.7 157.4,122.4 L174.2,105.6 C162,93.4 135,93.4 120,105.6 C120,105.6 120,105.6 120,105.6 L102.6,122.4 C115.1,129.9 120,133.5 120,133.5 L120,133.5 Z" fill="#FFD43B"/>
         {/* Blue Part */}
@@ -60,21 +60,10 @@ const PythonLogo = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const JavaLogo = ({ className }: { className?: string }) => (
-  <svg aria-label="Java logomark" className={className} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M5.636 17.014C4.01 15.483 3 13.362 3 11c0-4.411 3.589-8 8-8s8 3.589 8 8c0 2.362-1.01 4.483-2.636 6.014A7.952 7.952 0 0 1 19 11c0-3.86-3.14-7-7-7s-7 3.14-7 7c0 1.426.428 2.756 1.168 3.865" fill="#5382A1"/> {/* Blue-Grey Cup */}
-    <path d="M6.036 10.752c.15-.608.371-1.189.652-1.737A7.963 7.963 0 0 1 11 5a7.96 7.96 0 0 1 4.313 4.015c.28.548.502 1.129.651 1.737" fill="#EDB571"/> {/* Light Brown Coffee */}
-    <path d="M19 11a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1v-5h1z" fill="#5382A1"/> {/* Blue-Grey Handle */}
-    <path d="M2 18h18a1 1 0 0 1 0 2H2a1 1 0 0 1 0-2z" fill="#B0BEC5"/> {/* Light Grey Saucer */}
-    <path d="M9.5 2a.5.5 0 0 1 .5.5V5a.5.5 0 0 1-1 0V2.5a.5.5 0 0 1 .5-.5z" fill="#F89820"/> {/* Orange Steam */}
-    <path d="M12.5 1a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V1.5a.5.5 0 0 1 .5-.5z" fill="#F89820"/> {/* Orange Steam */}
-    <path d="M15.5 2a.5.5 0 0 1 .5.5V5a.5.5 0 0 1-1 0V2.5a.5.5 0 0 1 .5-.5z" fill="#F89820"/> {/* Orange Steam */}
-  </svg>
-);
-
-const TailwindLogo = ({ className }: { className?: string }) => (
-  <svg aria-label="Tailwind CSS logomark" className={className} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z" fill="#38BDF8"/>
+const NodejsLogo = ({ className }: { className?: string }) => (
+  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <title>Node.js</title>
+    <path d="M11.988 0L.334 6.025v12.012L11.988 24l11.655-5.963V6.025L11.988 0zM9.474 14.378H6.658V9.857h2.816v4.521zM12.37 14.378h-2.47V9.857h2.47v4.521zm5.115 0h-2.816V9.857h2.816V11.8h-1.11v.59h1.11v1.989z" fill="#339933"/>
   </svg>
 );
 
@@ -86,7 +75,7 @@ const projects = [
     imageUrl: 'https://placehold.co/600x400.png',
     imageHint: 'ecommerce platform online store',
     tags: ['Next.js', 'Firebase', 'Genkit AI', 'Tailwind CSS'],
-    liveLink: '#', 
+    liveLink: '#',
   },
   {
     title: 'Corporate Training Portal',
@@ -98,10 +87,10 @@ const projects = [
   },
   {
     title: 'Mobile Health & Wellness App',
-    description: 'Built a cross-platform mobile app using FlutterFlow for activity tracking, personalized fitness plans, and community engagement.',
+    description: 'Built a cross-platform mobile app using Flutter for activity tracking, personalized fitness plans, and community engagement.',
     imageUrl: 'https://placehold.co/600x400.png',
     imageHint: 'mobile app health fitness',
-    tags: ['FlutterFlow', 'Firebase', 'AI Insights'],
+    tags: ['Flutter', 'Firebase', 'AI Insights'],
     liveLink: '#',
   },
 ];
@@ -133,13 +122,11 @@ const testimonials = [
 const techStack = [
   { name: 'Next.js', icon: NextjsLogo, category: 'Frontend & Full-Stack' },
   { name: 'React', icon: ReactLogo, category: 'Frontend' },
-  { name: 'Genkit AI', icon: BrainCircuit, category: 'Artificial Intelligence' }, 
-  { name: 'Firebase', icon: FirebaseLogo, category: 'Backend & Database' },
-  { name: 'FlutterFlow', icon: FlutterLogo, category: 'Low-Code Mobile' },
+  { name: 'Node.js', icon: NodejsLogo, category: 'Backend' },
   { name: 'Python', icon: PythonLogo, category: 'Backend & AI' },
-  { name: 'Java', icon: JavaLogo, category: 'Backend' },
-  { name: 'Tailwind CSS', icon: TailwindLogo, category: 'Styling' },
-  { name: 'Cloud Platforms', icon: Cloud, category: 'Infrastructure' }, 
+  { name: 'Flutter', icon: FlutterLogo, category: 'Mobile Development' },
+  { name: 'Genkit AI', icon: BrainCircuit, category: 'Artificial Intelligence' },
+  { name: 'Firebase', icon: FirebaseLogo, category: 'Backend & Database' },
 ];
 
 
@@ -233,7 +220,7 @@ export default function HomePage() {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 text-center">
             {techStack.map((tech) => (
               <div key={tech.name} className="flex flex-col items-center p-4 bg-card shadow-md rounded-lg hover:shadow-xl transition-shadow">
-                <tech.icon className="w-10 h-10 mb-2" /> {/* Removed text-accent for SVGs with embedded colors */}
+                <tech.icon className="w-10 h-10 mb-2" />
                 <p className="text-sm font-medium text-primary">{tech.name}</p>
                 <p className="text-xs text-muted-foreground">{tech.category}</p>
               </div>
@@ -275,5 +262,3 @@ export default function HomePage() {
     </>
   );
 }
-
-    
