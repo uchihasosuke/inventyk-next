@@ -46,10 +46,15 @@ const summarizeMessageFlow = ai.defineFlow(
     outputSchema: SummarizeMessageOutputSchema,
   },
   async (input) => {
-    const { output } = await prompt(input);
-    if (!output) {
-      throw new Error('Failed to get summary from AI');
+    const response = await prompt(input);
+    
+    // Check if the response itself is falsy, or if the 'output' field is missing or falsy.
+    // Genkit prompts with an output schema are expected to return { output: YourOutputType }
+    if (!response || !response.output) { 
+      console.error('AI summary generation failed. Response or response.output from AI is missing or malformed.', response);
+      throw new Error('The AI failed to generate a valid summary. The response from the AI was incomplete or did not match the expected format.');
     }
-    return output;
+    return response.output; // Return the structured output
   }
 );
+
