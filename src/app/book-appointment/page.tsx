@@ -16,7 +16,8 @@ import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 import { CalendarIcon, Clock, User, Mail, MessageSquare, Send } from 'lucide-react';
 import React from 'react';
-import { appointmentFormSchema, type AppointmentFormValues, handleAppointmentSubmit } from './actions';
+import { appointmentFormSchema, type AppointmentFormValues } from './schemas'; // Updated import
+import { handleAppointmentSubmit } from './actions'; // Correctly importing from actions.ts
 
 
 const availableTimeSlots = [
