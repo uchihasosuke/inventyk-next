@@ -5,7 +5,7 @@ import { format } from 'date-fns';
 import { summarizeMessage } from '@/ai/flows/summarize-message-flow';
 import { db } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import type { AppointmentFormValues } from './schemas'; // Updated import
+import type { AppointmentFormValues } from './schemas';
 
 export async function handleAppointmentSubmit(data: AppointmentFormValues) {
   try {
@@ -29,8 +29,37 @@ export async function handleAppointmentSubmit(data: AppointmentFormValues) {
 
     return { success: true, message: 'Appointment booked successfully! We will be in touch shortly.' };
   } catch (error) {
-    console.error('Error booking appointment or saving to Firestore:', error);
-    const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred.';
-    return { success: false, message: `Failed to book appointment: ${errorMessage}` };
+    console.error('Error booking appointment or saving to Firestore (Raw Error):', error);
+    
+    let clientErrorMessage = 'An unexpected error occurred while processing your appointment.';
+    
+    if (error instanceof Error) {
+      clientErrorMessage = error.message;
+    } else if (typeof error === 'string') {
+      clientErrorMessage = error;
+    } else {
+      // Attempt to get a string representation for complex errors, but be cautious
+      try {
+        // For Genkit errors or other structured errors, they might have more specific details
+        if (typeof error === 'object' && error !== null) {
+            if ('details' in error && typeof error.details === 'string') {
+                clientErrorMessage = error.details as string;
+            } else if ('message' in error && typeof error.message === 'string') {
+                 clientErrorMessage = error.message as string;
+            } else {
+                const stringifiedError = JSON.stringify(error);
+                if (stringifiedError !== '{}') { // Avoid empty object strings
+                    clientErrorMessage = stringifiedError;
+                }
+            }
+        }
+      } catch (e) {
+        // If stringify fails or error is not an object, stick to a generic message or already set message
+        console.error('Could not stringify the error object:', e);
+      }
+    }
+    
+    console.error('Processed error message for client:', clientErrorMessage);
+    return { success: false, message: `Failed to book appointment: ${clientErrorMessage}` };
   }
 }
