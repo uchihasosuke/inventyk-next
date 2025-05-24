@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview An AI flow to summarize a user's message.
@@ -8,7 +9,7 @@
  */
 
 import { ai } from '@/ai/genkit';
-import { z } from 'genkit/zod';
+import { z } from 'genkit'; // Changed from 'genkit/zod'
 
 const SummarizeMessageInputSchema = z.object({
   message: z.string().describe('The user message to be summarized.'),

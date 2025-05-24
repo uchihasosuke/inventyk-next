@@ -1,9 +1,8 @@
-'use client'; // For react-hook-form and client-side interactions
 
-import type { Metadata } from 'next'; // Only for static metadata, dynamic needs generateMetadata
+'use client'; 
+
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm, Controller } from 'react-hook-form';
-import { z } from 'zod';
+import { useForm } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -17,24 +16,8 @@ import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 import { CalendarIcon, Clock, User, Mail, MessageSquare, Send } from 'lucide-react';
 import React from 'react';
-import { summarizeMessage } from '@/ai/flows/summarize-message-flow'; // Import the AI flow
+import { appointmentFormSchema, type AppointmentFormValues, handleAppointmentSubmit } from './actions';
 
-// Static metadata
-// export const metadata: Metadata = {
-//   title: 'Book Appointment',
-//   description: 'Schedule a consultation with Inventyk. Pick a date and time that works for you.',
-// };
-// For dynamic metadata if needed, or just keep it simple if not critical path for now
-
-const appointmentFormSchema = z.object({
-  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
-  email: z.string().email({ message: 'Please enter a valid email address.' }),
-  date: z.date({ required_error: 'Please select a date for your appointment.' }),
-  time: z.string({ required_error: 'Please select a time slot.' }),
-  message: z.string().min(10, { message: 'Message must be at least 10 characters.' }).max(500, { message: 'Message cannot exceed 500 characters.' }),
-});
-
-type AppointmentFormValues = z.infer<typeof appointmentFormSchema>;
 
 const availableTimeSlots = [
   '09:00 AM - 10:00 AM',
@@ -44,35 +27,6 @@ const availableTimeSlots = [
   '03:00 PM - 04:00 PM',
   '04:00 PM - 05:00 PM',
 ];
-
-// Server action to handle form submission
-async function handleAppointmentSubmit(data: AppointmentFormValues) {
-  'use server';
-  try {
-    console.log('Original Appointment Data:', data);
-    
-    const { summary } = await summarizeMessage({ message: data.message });
-    console.log('AI Summarized Message:', summary);
-
-    const bookingDetails = {
-      ...data,
-      date: format(data.date, 'yyyy-MM-dd'), // Format date for storage
-      messageSummary: summary,
-      submittedAt: new Date().toISOString(),
-    };
-
-    console.log('Final Booking Details (to be stored in Firebase):', bookingDetails);
-    // Here, you would integrate Firebase to store `bookingDetails`
-    // For example: await db.collection('appointments').add(bookingDetails);
-
-    return { success: true, message: 'Appointment booked successfully! We will be in touch shortly.' };
-  } catch (error) {
-    console.error('Error booking appointment:', error);
-    const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred.';
-    return { success: false, message: `Failed to book appointment: ${errorMessage}` };
-  }
-}
-
 
 export default function BookAppointmentPage() {
   const { toast } = useToast();
@@ -84,6 +38,8 @@ export default function BookAppointmentPage() {
       name: '',
       email: '',
       message: '',
+      // date: undefined, // No need to set default for date explicitly here if not required by schema logic
+      // time: undefined, // No need to set default for time explicitly here if not required by schema logic
     },
   });
 
@@ -107,10 +63,6 @@ export default function BookAppointmentPage() {
     }
   }
   
-  // Dynamic metadata can be generated here if needed for SEO
-  // For now, relying on RootLayout defaults or simple static metadata.
-  // Consider adding generateMetadata function if complex dynamic titles/descriptions are required.
-
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
       <section className="text-center mb-12">

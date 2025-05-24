@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -5,32 +6,40 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Mail, Phone, MapPin, User, Smartphone, MessageSquare, FileText } from 'lucide-react'; // Added User, Smartphone, MessageSquare, FileText
+import { Mail, Phone, MapPin, User, Smartphone, MessageSquare, FileText, Send } from 'lucide-react';
+import { db } from '@/lib/firebase'; // Import Firestore instance
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { ContactForm } from '@/components/sections/ContactForm'; // We'll create this client component
 
 export const metadata: Metadata = {
   title: 'Contact Us',
   description: 'Get in touch with Inventyk. Reach out for inquiries, collaborations, or to discuss your next project. Find our office location and contact details.',
 };
 
-export default function ContactPage() {
-  // Simple form handler for demonstration - logs to console
-  async function handleSubmit(formData: FormData) {
-    "use server";
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const phone = formData.get('phone');
-    const subject = formData.get('subject');
-    const message = formData.get('message');
-    
-    console.log("Contact Form Submitted:", { name, email, phone, subject, message });
-    // Here you would typically send this data to a backend or email service,
-    // or store it in Firebase Firestore/Realtime DB.
-    // For example: await db.collection('contacts').add({ name, email, phone, subject, message, submittedAt: new Date() });
-
-    // A toast message could be triggered on the client-side after this server action completes.
-    // This requires more setup with form state management (e.g. react-hook-form or custom state).
+// Server action to handle form submission
+export async function handleContactSubmit(formData: {
+  name: string;
+  email: string;
+  phone?: string;
+  subject: string;
+  message: string;
+}) {
+  "use server";
+  try {
+    await addDoc(collection(db, 'contacts'), {
+      ...formData,
+      submittedAt: serverTimestamp(),
+    });
+    console.log("Contact Form Submitted to Firestore:", formData);
+    return { success: true, message: "Your message has been sent successfully! We'll get back to you soon." };
+  } catch (error) {
+    console.error("Error submitting contact form to Firestore:", error);
+    const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred.";
+    return { success: false, message: `Failed to send message: ${errorMessage}` };
   }
+}
 
+export default function ContactPage() {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
       <section className="text-center mb-16">
@@ -48,33 +57,7 @@ export default function ContactPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <form action={handleSubmit} className="space-y-6">
-              <div>
-                <Label htmlFor="name" className="flex items-center"><User className="w-4 h-4 mr-2 text-primary/70" />Full Name</Label>
-                <Input type="text" id="name" name="name" placeholder="John Doe" required className="mt-1" />
-              </div>
-              <div>
-                <Label htmlFor="email" className="flex items-center"><Mail className="w-4 h-4 mr-2 text-primary/70" />Email Address</Label>
-                <Input type="email" id="email" name="email" placeholder="john.doe@example.com" required className="mt-1" />
-              </div>
-              <div>
-                <Label htmlFor="phone" className="flex items-center"><Smartphone className="w-4 h-4 mr-2 text-primary/70" />Phone Number (Optional)</Label>
-                <Input type="tel" id="phone" name="phone" placeholder="+91 12345 67890" className="mt-1" />
-              </div>
-              <div>
-                <Label htmlFor="subject" className="flex items-center"><FileText className="w-4 h-4 mr-2 text-primary/70" />Subject</Label>
-                <Input type="text" id="subject" name="subject" placeholder="Inquiry about services" required className="mt-1" />
-              </div>
-              <div>
-                <Label htmlFor="message" className="flex items-center"><MessageSquare className="w-4 h-4 mr-2 text-primary/70" />Message</Label>
-                <Textarea id="message" name="message" rows={5} placeholder="Your message..." required className="mt-1" />
-              </div>
-              <div>
-                <Button type="submit" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" size="lg">
-                  Send Message
-                </Button>
-              </div>
-            </form>
+            <ContactForm onSubmitAction={handleContactSubmit} />
           </CardContent>
         </Card>
 
