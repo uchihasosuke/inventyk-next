@@ -1,72 +1,26 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, Lightbulb, Zap, BrainCircuit, Users, Briefcase } from 'lucide-react'; // Removed Cloud
+import { CheckCircle, Lightbulb, Zap, BrainCircuit, Users, Briefcase } from 'lucide-react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ProjectCard } from '@/components/sections/ProjectCard';
 import { TestimonialCard } from '@/components/sections/TestimonialCard';
 
+// Import logos from the new components/icons directory
+import { NextjsLogo } from '@/components/icons/NextjsLogo';
+import { ReactLogo } from '@/components/icons/ReactLogo';
+import { FirebaseLogo } from '@/components/icons/FirebaseLogo';
+import { FlutterLogo } from '@/components/icons/FlutterLogo';
+import { PythonLogo } from '@/components/icons/PythonLogo';
+import { NodejsLogo } from '@/components/icons/NodejsLogo';
+
+
 export const metadata: Metadata = {
   title: 'Home',
   description: 'Welcome to Inventyk - Your partner in digital transformation. We innovate, integrate, and inspire to bring your ideas to life with AI-powered solutions and expert training.',
 };
-
-// SVG Logo Components with specific brand colors
-
-const NextjsLogo = ({ className }: { className?: string }) => (
-  <svg aria-label="Next.js logomark" className={className} viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
-    <path fillRule="evenodd" clipRule="evenodd" d="M64 0C28.654 0 0 28.654 0 64C0 99.346 28.654 128 64 128C99.346 128 128 99.346 128 64C128 28.654 99.346 0 64 0ZM87.003 90.858L69.791 61.669L51.507 90.858H38L64.461 48.531L71.689 37H85.198L57.28 82.249L75.587 51.045H89.096L87.003 90.858Z" fill="black"/>
-  </svg>
-);
-
-const ReactLogo = ({ className }: { className?: string }) => (
-  <svg aria-label="React logomark" className={className} viewBox="-11.5 -10.23174 23 20.46348" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="0" cy="0" r="2.05" fill="#61DAFB"/>
-    <g stroke="#61DAFB" strokeWidth="1" fill="none">
-      <ellipse rx="11" ry="4.2"/>
-      <ellipse rx="11" ry="4.2" transform="rotate(60)"/>
-      <ellipse rx="11" ry="4.2" transform="rotate(120)"/>
-    </g>
-  </svg>
-);
-
-const FirebaseLogo = ({ className }: { className?: string }) => (
-  <svg aria-label="Firebase logomark" className={className} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M5.96347 19.8671L13.148 4.2766L10.2899 3L3 15.634L5.96347 19.8671Z" fill="#FFA000"/>
-    <path d="M13.1387 4.2766L11.6055 15.4011L18.7032 10.8508L13.1387 4.2766Z" fill="#FFCA28"/>
-    <path d="M5.96347 19.8671L12.5066 21L11.6055 15.4011L5.96347 19.8671Z" fill="#F57F17"/>
-  </svg>
-);
-
-const FlutterLogo = ({ className }: { className?: string }) => (
- <svg aria-label="Flutter logomark" className={className} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M14.314 0L6.06 8.256l4.128 4.128L22.938 0h-8.624z" fill="#027DFD"/>
-    <path d="M14.314 9.552l-4.128 4.128L6.06 17.808l8.256 8.256h8.624l-8.624-8.624z" fill="#027DFD"/>
-  </svg>
-);
-
-const PythonLogo = ({ className }: { className?: string }) => (
-  <svg aria-label="Python logomark" className={className} viewBox="0 0 240 240" version="1.1" xmlns="http://www.w3.org/2000/svg">
-    <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-      <g transform="translate(0.000000, 1.000000)">
-        {/* Yellow Part */}
-        <path d="M120,23.4 C146.1,23.4 170,32.7 188.7,48.4 C190.7,50.2 192.5,51.9 194.4,53.7 L212,71.4 C212,71.4 211.9,71.5 211.9,71.5 C214.6,75.9 216.7,80.7 218.2,85.7 C218.7,87.3 219.1,88.9 219.4,90.6 C221.4,100.9 221.4,111.6 219.4,121.9 C219.1,123.6 218.7,125.2 218.2,126.8 C216.7,131.8 214.6,136.6 211.9,141 C211.9,141.1 212,141.1 212,141.1 L194.4,158.8 C192.5,160.6 190.7,162.4 188.7,164.2 C170,179.9 146.1,189.2 120,189.2 C93.9,189.2 70,179.9 51.3,164.2 C49.3,162.4 47.5,160.6 45.6,158.8 L28,141.1 C28,141.1 28.1,141.1 28.1,141 C25.4,136.6 23.3,131.8 21.8,126.8 C21.3,125.2 20.9,123.6 20.6,121.9 C18.6,111.6 18.6,100.9 20.6,90.6 C20.9,88.9 21.3,87.3 21.8,85.7 C23.3,80.7 25.4,75.9 28.1,71.5 C28.1,71.5 28,71.4 28,71.4 L45.6,53.7 C47.5,51.9 49.3,50.2 51.3,48.4 C70,32.7 93.9,23.4 120,23.4 L120,23.4 Z M120,169.9 C112.4,169.9 105.8,176.6 105.8,184.2 C105.8,191.7 112.4,198.4 120,198.4 C127.6,198.4 134.2,191.7 134.2,184.2 C134.2,176.6 127.6,169.9 120,169.9 L120,169.9 Z M120,133.5 C133.3,133.5 146.2,129.7 157.4,122.4 L174.2,105.6 C162,93.4 135,93.4 120,105.6 C120,105.6 120,105.6 120,105.6 L102.6,122.4 C115.1,129.9 120,133.5 120,133.5 L120,133.5 Z" fill="#FFD43B"/>
-        {/* Blue Part */}
-        <path d="M120,23.4 C93.9,23.4 70,32.7 51.3,48.4 C49.3,50.2 47.5,51.9 45.6,53.7 L28,71.4 C28,71.4 28.1,71.5 28.1,71.5 C25.4,75.9 23.3,80.7 21.8,85.7 C21.3,87.3 20.9,88.9 20.6,90.6 C18.6,100.9 18.6,111.6 20.6,121.9 C20.9,123.6 21.3,125.2 21.8,126.8 C23.3,131.8 25.4,136.6 28.1,141 C28.1,141.1 28,141.1 28,141.1 L45.6,158.8 C47.5,160.6 49.3,162.4 51.3,164.2 C70,179.9 93.9,189.2 120,189.2 L120,189.2 L120,152.9 C107.9,152.9 93.8,142.6 86.2,126.8 L69.4,108.5 C81.7,96.2 108.6,96.2 120,108.5 C120,108.5 120,108.5 120,108.5 L120,70.1 C120,70.1 112.4,63.5 105.8,63.5 C98.2,63.5 91.7,70.1 91.7,77.7 C91.7,85.3 98.2,91.9 105.8,91.9 L105.8,91.9 L120,91.9 L120,23.4 L120,23.4 Z" fill="#3776AB"/>
-      </g>
-    </g>
-  </svg>
-);
-
-const NodejsLogo = ({ className }: { className?: string }) => (
-  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={className}>
-    <title>Node.js</title>
-    <path d="M11.988 0L.334 6.025v12.012L11.988 24l11.655-5.963V6.025L11.988 0zM9.474 14.378H6.658V9.857h2.816v4.521zM12.37 14.378h-2.47V9.857h2.47v4.521zm5.115 0h-2.816V9.857h2.816V11.8h-1.11v.59h1.11v1.989z" fill="#339933"/>
-  </svg>
-);
-
 
 const projects = [
   {
