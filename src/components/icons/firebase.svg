@@ -1,22 +1,2 @@
-<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Firebase logomark">
-<path d="M293.251 883.013L213.333 960.309C219.972 966.732 228.601 969.988 237.278 969.988C244.783 969.988 252.335 967.546 258.451 962.87L293.251 883.013Z" fill="#F57C00"/>
-<path d="M562.584 506.082L213.333 161.691L213.333 656.853L562.584 506.082Z" fill="url(#paint0_linear_179_1183)"/>
-<path d="M732.867 721.805L562.584 824.049L562.584 506.082L732.867 325.895L732.867 721.805Z" fill="url(#paint1_linear_179_1183)"/>
-<path d="M732.867 325.895L562.584 123.651L293.251 0L732.867 325.895Z" fill="url(#paint2_linear_179_1183)"/>
-<path d="M213.333 161.691L293.251 0L562.584 123.651L213.333 161.691Z" fill="#FFA000"/>
-<path d="M258.451 962.87C264.567 967.593 272.119 970.035 279.624 970.035C288.253 970.035 296.929 966.779 303.568 960.356L337.737 883.013L293.251 883.013L258.451 962.87Z" fill="#F57C00"/>
-<defs>
-<linearGradient id="paint0_linear_179_1183" x1="562.584" y1="409.272" x2="213.333" y2="409.272" gradientUnits="userSpaceOnUse">
-<stop stop-color="#FFCA28"/>
-<stop offset="1" stop-color="#FFA000"/>
-</linearGradient>
-<linearGradient id="paint1_linear_179_1183" x1="562.584" y1="574.972" x2="732.867" y2="574.972" gradientUnits="userSpaceOnUse">
-<stop stop-color="#F57C00"/>
-<stop offset="1" stop-color="#E65100"/>
-</linearGradient>
-<linearGradient id="paint2_linear_179_1183" x1="732.867" y1="162.947" x2="293.251" y2="162.947" gradientUnits="userSpaceOnUse">
-<stop stop-color="#FFCA28"/>
-<stop offset="1" stop-color="#FFA000"/>
-</linearGradient>
-</defs>
-</svg>
+<?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="-47.5 0 351 351" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid"><defs><path d="M1.253 280.732l1.605-3.131 99.353-188.518-44.15-83.475C54.392-1.283 45.074.474 43.87 8.188L1.253 280.732z" id="a"/><filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="b"><feGaussianBlur stdDeviation="17.5" in="SourceAlpha" result="shadowBlurInner1"/><feOffset in="shadowBlurInner1" result="shadowOffsetInner1"/><feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" in="shadowInnerInner1"/></filter><path d="M134.417 148.974l32.039-32.812-32.039-61.007c-3.042-5.791-10.433-6.398-13.443-.59l-17.705 34.109-.53 1.744 31.678 58.556z" id="c"/><filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="d"><feGaussianBlur stdDeviation="3.5" in="SourceAlpha" result="shadowBlurInner1"/><feOffset dx="1" dy="-9" in="shadowBlurInner1" result="shadowOffsetInner1"/><feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.09 0" in="shadowInnerInner1"/></filter></defs><path d="M0 282.998l2.123-2.972L102.527 89.512l.212-2.017L58.48 4.358C54.77-2.606 44.33-.845 43.114 6.951L0 282.998z" fill="#FFC24A"/><use fill="#FFA712" fill-rule="evenodd" xlink:href="#a"/><use filter="url(#b)" xlink:href="#a"/><path d="M135.005 150.38l32.955-33.75-32.965-62.93c-3.129-5.957-11.866-5.975-14.962 0L102.42 87.287v2.86l32.584 60.233z" fill="#F4BD62"/><use fill="#FFA50E" fill-rule="evenodd" xlink:href="#c"/><use filter="url(#d)" xlink:href="#c"/><path fill="#F6820C" d="M0 282.998l.962-.968 3.496-1.42 128.477-128 1.628-4.431-32.05-61.074z"/><path d="M139.121 347.551l116.275-64.847-33.204-204.495c-1.039-6.398-8.888-8.927-13.468-4.34L0 282.998l115.608 64.548a24.126 24.126 0 0 0 23.513.005" fill="#FDE068"/><path d="M254.354 282.16L221.402 79.218c-1.03-6.35-7.558-8.977-12.103-4.424L1.29 282.6l114.339 63.908a23.943 23.943 0 0 0 23.334.006l115.392-64.355z" fill="#FCCA3F"/><path d="M139.12 345.64a24.126 24.126 0 0 1-23.512-.005L.931 282.015l-.93.983 115.607 64.548a24.126 24.126 0 0 0 23.513.005l116.275-64.847-.285-1.752-115.99 64.689z" fill="#EEAB37"/></svg>
