@@ -8,7 +8,7 @@ import { ProjectCard } from '@/components/sections/ProjectCard';
 import { TestimonialCard } from '@/components/sections/TestimonialCard';
 import { Logo } from '@/components/Logo';
 import { ScrollAnimation } from '@/components/ui/scroll-animation';
-// Removed FadeInOnScroll import
+import { TechStackCard } from '@/components/sections/TechStackCard';
 
 // Assuming filenames like nextjs.svg, react.svg, etc.
 // Adjust paths if your filenames are different.
@@ -30,32 +30,28 @@ const projects = [
   {
     title: 'SmartLibTrack',
     description: 'SmartLibTrack is a smart library entry/exit system that uses ID scan and camera capture to track student visits in real-time.',
-    imageUrl: '/images/projects/smartlibtrack-showcase.png',
-    imageHint: 'app login screen',
+    videoUrl: '/videos/smartlibtrack-showcase.mp4',
     tags: ['Next.js', 'Genkit AI', 'Tailwind CSS', 'Firebase'],
     liveLink: 'https://libtrack-agppi.vercel.app/admin/dashboard',
   },
   {
     title: 'AI-Powered E-commerce Platform',
     description: 'Developed a scalable e-commerce solution with personalized recommendations and an AI chatbot for customer support, boosting sales by 25%.',
-    imageUrl: 'https://placehold.co/600x400.png',
-    imageHint: 'ecommerce platform online store',
+    videoUrl: '/videos/ecommerce-demo.mp4',
     tags: ['Next.js', 'Firebase', 'Genkit AI', 'Tailwind CSS'],
     liveLink: '#',
   },
   {
     title: 'Corporate Training Portal',
     description: 'Created an interactive online portal for employee training and development, featuring course management, progress tracking, and certification.',
-    imageUrl: 'https://placehold.co/600x400.png',
-    imageHint: 'training portal online learning',
+    videoUrl: '/videos/training-portal.mp4',
     tags: ['React', 'Node.js', 'MongoDB', 'ShadCN UI'],
     liveLink: '#',
   },
   {
     title: 'Mobile Health & Wellness App',
     description: 'Built a cross-platform mobile app using Flutter for activity tracking, personalized fitness plans, and community engagement.',
-    imageUrl: 'https://placehold.co/600x400.png',
-    imageHint: 'mobile app health fitness',
+    videoUrl: '/videos/health-app.mp4',
     tags: ['Flutter', 'Firebase', 'AI Insights'],
     liveLink: '#',
   },
@@ -86,13 +82,13 @@ const testimonials = [
 ];
 
 const techStack = [
-  { name: 'Next.js', icon: NextjsLogo, category: 'Frontend & Full-Stack' },
-  { name: 'React', icon: ReactLogo, category: 'Frontend' },
-  { name: 'Node.js', icon: NodejsLogo, category: 'Backend' },
-  { name: 'Python', icon: PythonLogo, category: 'Backend & AI' },
-  { name: 'Flutter', icon: FlutterLogo, category: 'Mobile Development' },
-  { name: 'Genkit AI', icon: GenkitAILogo, category: 'Artificial Intelligence' },
-  { name: 'Firebase', icon: FirebaseLogo, category: 'Backend & Database' },
+  { name: 'Next.js', icon: '/icons/nextjs.svg', category: 'Frontend & Full-Stack' },
+  { name: 'React', icon: '/icons/react.svg', category: 'Frontend' },
+  { name: 'Node.js', icon: '/icons/nodejs.svg', category: 'Backend' },
+  { name: 'Python', icon: '/icons/python.svg', category: 'Backend & AI' },
+  { name: 'Flutter', icon: '/icons/flutter.svg', category: 'Mobile Development' },
+  { name: 'Genkit AI', icon: '/icons/genkitai.svg', category: 'Artificial Intelligence' },
+  { name: 'Firebase', icon: '/icons/firebase.svg', category: 'Backend & Database' },
 ];
 
 
@@ -197,41 +193,9 @@ export default function HomePage() {
             We harness the power of modern technologies and AI to build robust, scalable, and innovative solutions.
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 text-center">
-            {techStack.map((tech) => {
-              const IconToRender = tech.icon;
-              const isFunctionComponent = typeof IconToRender === 'function';
-              // Check if IconToRender is an object with a 'src' property (typical for image assets)
-              const isAssetObject = typeof IconToRender === 'object' && IconToRender && (IconToRender as any).src;
-              
-              const iconSizeClass = 'w-10 h-10'; // Default size for Lucide icons
-              const imageRenderWidth = 40; // Default width for next/image
-              const imageRenderHeight = 40; // Default height for next/image
-              
-              const finalIconDisplayClasses = `${iconSizeClass} mb-2`;
-
-              return (
-                <div key={tech.name} className="flex flex-col items-center p-4 bg-card shadow-md rounded-lg hover:shadow-xl transition-shadow">
-                  {isFunctionComponent ? (
-                    // Render as a component (e.g., Lucide icon or SVGR-processed SVG)
-                    <IconToRender className={finalIconDisplayClasses} />
-                  ) : isAssetObject ? (
-                    // Render using next/image if it's an asset object with a src
-                    <Image
-                      src={(IconToRender as any).src}
-                      alt={tech.name}
-                      width={imageRenderWidth}
-                      height={imageRenderHeight}
-                      className="mb-2" // Tailwind classes on next/image usually apply to the wrapper, not the img itself
-                    />
-                  ) : (
-                    // Fallback for unknown icon types
-                    <div className={`${finalIconDisplayClasses} text-muted-foreground`} aria-label={tech.name}>?</div>
-                  )}
-                  <p className="text-sm font-medium text-primary">{tech.name}</p>
-                  <p className="text-xs text-muted-foreground">{tech.category}</p>
-                </div>
-              );
-            })}
+            {techStack.map((tech) => (
+              <TechStackCard key={tech.name} {...tech} />
+            ))}
           </div>
         </div>
       </section>
