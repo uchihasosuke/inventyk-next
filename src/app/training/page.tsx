@@ -3,8 +3,9 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Code, Briefcase, Laptop, BookOpen, Users } from 'lucide-react';
+import { Code, Briefcase, Laptop, BookOpen, Users, Mail, Phone } from 'lucide-react';
 import { ScrollAnimation } from '@/components/ui/scroll-animation';
+import { TrainingContact } from '@/components/sections/TrainingContact';
 
 export const metadata: Metadata = {
   title: 'Training & Internships',
@@ -108,9 +109,7 @@ export default function TrainingPage() {
           <p className="text-lg text-foreground/80 max-w-2xl mx-auto mb-8">
             Join our programs to acquire in-demand skills and open doors to exciting career paths in the tech industry.
           </p>
-          <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-            <Link href="/pricing#contact-us-section">Join Now / Inquire</Link>
-          </Button>
+          <TrainingContact />
         </section>
       </ScrollAnimation>
     </div>

@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -12,10 +11,51 @@ interface PricingCardProps {
   pricePeriod?: string;
   features: string[];
   buttonText: string;
-  buttonLink?: string; // Link for the button, if it's a direct navigation
+  buttonLink?: string;
   isFeatured?: boolean;
   buttonVariant?: "default" | "outline" | "secondary" | "ghost" | "link";
-  onButtonClick?: () => void; // For custom actions like scrolling
+  onButtonClick?: () => void;
+}
+
+function createEmailTemplate(plan: { title: string; price: string; pricePeriod: string; features: string[] }) {
+  const subject = `Inquiry for ${plan.title} Plan - Inventyk Solutions`;
+  
+  let planSpecificMessage = '';
+  switch(plan.title) {
+    case 'Basic':
+      planSpecificMessage = 'I would like to develop a single-page application with core functionality.';
+      break;
+    case 'Standard':
+      planSpecificMessage = 'I am interested in developing a multi-page application with advanced features and AI integration.';
+      break;
+    case 'Premium':
+      planSpecificMessage = 'I am looking to build a comprehensive application with full-stack features and multiple AI integrations.';
+      break;
+    case 'Enterprise':
+      planSpecificMessage = 'I would like to discuss a custom enterprise solution for my organization.';
+      break;
+    default:
+      planSpecificMessage = 'I would like to learn more about this plan.';
+  }
+
+  const body = `
+Hi Inventyk Team,
+
+${planSpecificMessage}
+
+Selected Plan: ${plan.title} (${plan.price}${plan.pricePeriod})
+
+Features Included:
+${plan.features.map(feature => `- ${feature}`).join('\n')}
+
+My Project Requirements:
+[Please describe your specific requirements here]
+
+Looking forward to your response.
+
+Best regards,`;
+
+  return { subject, body: body.trim() };
 }
 
 export function PricingCard({
@@ -24,7 +64,7 @@ export function PricingCard({
   pricePeriod = '/month',
   features,
   buttonText,
-  buttonLink, // Removed default to handle it based on onButtonClick presence
+  buttonLink,
   isFeatured = false,
   buttonVariant = "default",
   onButtonClick,
@@ -34,6 +74,11 @@ export function PricingCard({
     ? 'bg-accent hover:bg-accent/90 text-accent-foreground' 
     : (effectiveButtonVariant === "outline" ? 'border-primary text-primary hover:bg-primary/10' : 'bg-primary hover:bg-primary/90 text-primary-foreground');
 
+  const handleEmailClick = () => {
+    const { subject, body } = createEmailTemplate({ title, price, pricePeriod, features });
+    const mailtoLink = `mailto:inventykaipoweredsolution@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+  };
 
   return (
     <Card className={`shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full ${isFeatured ? 'border-2 border-accent relative' : 'border-border'}`}>
@@ -58,35 +103,14 @@ export function PricingCard({
             </li>
           ))}
         </ul>
-        {onButtonClick ? (
-          <Button 
-            size="lg" 
-            variant={effectiveButtonVariant}
-            className={`w-full mt-auto ${buttonClasses}`}
-            onClick={onButtonClick}
-          >
-            {buttonText}
-          </Button>
-        ) : buttonLink ? (
-          <Button asChild size="lg" variant={effectiveButtonVariant} className={`w-full mt-auto ${buttonClasses}`}>
-            <Link href={buttonLink}>{buttonText}</Link>
-          </Button>
-        ) : (
-           <Button 
-            size="lg" 
-            variant={effectiveButtonVariant}
-            className={`w-full mt-auto ${buttonClasses}`}
-            // Default action if no link and no onClick provided
-            onClick={() => {
-              const contactSection = document.getElementById('contact-us-section');
-              if (contactSection) {
-                contactSection.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
-          >
-            {buttonText}
-          </Button>
-        )}
+        <Button 
+          size="lg" 
+          variant={effectiveButtonVariant}
+          className={`w-full mt-auto ${buttonClasses}`}
+          onClick={handleEmailClick}
+        >
+          {buttonText}
+        </Button>
       </CardContent>
     </Card>
   );
