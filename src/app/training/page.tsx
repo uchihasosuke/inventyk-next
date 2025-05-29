@@ -20,10 +20,28 @@ const courses = [
     imageHint: 'python code'
   },
   {
+    title: 'Data Structures with Python',
+    icon: Code,
+    description: 'Master essential data structures and algorithms using Python. Perfect for interview preparation and problem-solving skills.',
+    imageHint: 'python algorithms'
+  },
+  {
+    title: 'Flutter App Development',
+    icon: Laptop,
+    description: 'Learn to build beautiful cross-platform mobile apps for iOS and Android using Flutter and Dart.',
+    imageHint: 'flutter code'
+  },
+  {
     title: 'Java Full-Stack Development',
     icon: Code,
     description: 'Learn to build robust enterprise-level applications with Java, Spring Boot, and modern frontend frameworks.',
     imageHint: 'java code'
+  },
+  {
+    title: 'C Programming Fundamentals',
+    icon: Laptop,
+    description: 'Master the basics of programming with C, including memory management, pointers, and system programming concepts.',
+    imageHint: 'c code'
   },
   {
     title: 'C++ for Systems Programming',
@@ -51,11 +69,11 @@ export default function TrainingPage() {
             <BookOpen className="w-10 h-10 mr-4 text-accent" /> Our Core Courses
           </h2>
         </ScrollAnimation>
-        <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {courses.map((course, index) => (
             <ScrollAnimation 
               key={course.title}
-              direction={index === 1 ? 'up' : index === 0 ? 'left' : 'right'}
+              direction={index % 3 === 0 ? 'left' : index % 3 === 1 ? 'up' : 'right'}
               delay={0.2 * (index + 1)}
             >
               <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">

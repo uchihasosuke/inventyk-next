@@ -11,16 +11,16 @@ interface LogoProps {
 export function Logo({ size = 'default' }: LogoProps) {
   const [imageError, setImageError] = useState(false);
   // Target rendered height for the SVG logo based on size
-  const displayHeight = size === 'large' ? 42 : 32; // Increased from 36/24 to 42/32
+  const displayHeight = size === 'large' ? 120 : 32; // Increased from 80 to 120 for large size
   const displayWidth = displayHeight * (501/498); // Using actual SVG aspect ratio
 
   // Helper function to render the name part, now stacked vertically
   const renderName = (isFallback: boolean = false) => (
     <div className={`flex flex-col justify-center ${isFallback ? '' : 'ml-2'}`}>
-      <span className={`font-bold text-primary whitespace-nowrap ${size === 'large' ? 'text-2xl' : 'text-lg'} leading-tight`}>
+      <span className={`font-bold text-primary whitespace-nowrap ${size === 'large' ? 'text-5xl' : 'text-lg'} leading-tight`}>
         INVENTYK
       </span>
-      <span className={`leading-tight text-foreground/70 hidden sm:block whitespace-nowrap tracking-tight ${size === 'large' ? 'text-sm' : 'text-xs'}`}>
+      <span className={`leading-tight text-foreground/70 hidden sm:block whitespace-nowrap tracking-tight ${size === 'large' ? 'text-xl' : 'text-xs'}`}>
         AI Powered Solution & Services
       </span>
     </div>
@@ -38,7 +38,7 @@ export function Logo({ size = 'default' }: LogoProps) {
           alt="Inventyk Logo"
           width={displayWidth}
           height={displayHeight}
-          className="shrink-0 [filter:brightness(0.85)]"
+          className="shrink-0 [&_path]:fill-background"
           priority
           onError={() => setImageError(true)}
         />

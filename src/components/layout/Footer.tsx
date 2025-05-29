@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import { Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 
@@ -32,9 +31,9 @@ export function Footer() {
             <Mail className="h-4 w-4 mr-2" />
             inventykaipoweredsolution@gmail.com
           </a>
-          <a href="tel:+919226366202" className="flex items-center justify-center hover:text-primary transition-colors">
+          <a href="https://t.me/INVENTYK" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center hover:text-primary transition-colors">
             <Phone className="h-4 w-4 mr-2" />
-            +91 9226366202
+            Message on Telegram
           </a>
           <p className="flex items-center justify-center">
             <MapPin className="h-4 w-4 mr-2" />

@@ -63,24 +63,22 @@ const projects = [
 const testimonials = [
   {
     quote: "Inventyk transformed our online presence with their innovative solutions and rapid development. Their team is professional and incredibly skilled.",
-    name: 'Jane Doe',
-    company: 'CEO, Tech Solutions Inc.',
-    avatarUrl: 'https://placehold.co/100x100.png',
-    avatarHint: 'woman ceo portrait'
+    name: 'Dr. Chougule',
+    company: 'Principal, AGPPI',
+    avatarUrl: '/images/chougule.png',
+    avatarHint: 'man principal portrait'
   },
   {
     quote: "The AI-assisted development approach by Inventyk was a game-changer for our project timeline. We launched ahead of schedule with a superior product.",
-    name: 'John Smith',
-    company: 'CTO, Innovate Startups',
-    avatarUrl: 'https://placehold.co/100x100.png',
-    avatarHint: 'man cto portrait'
+    name: 'Mrs. Kasture',
+    company: 'Head Librarian, AGPPI'
   },
   {
     quote: "Their training programs are top-notch. Our team gained valuable skills in a very short amount of time thanks to Inventyk's expert instructors.",
-    name: 'Alice Brown',
-    company: 'HR Manager, Future Corp',
-    avatarUrl: 'https://placehold.co/100x100.png',
-    avatarHint: 'woman manager portrait'
+    name: 'Mrs. Mote',
+    company: 'HOD of AI&DS department, VVPIET',
+    avatarUrl: '/images/Mote .png',
+    avatarHint: 'woman hod portrait'
   },
 ];
 

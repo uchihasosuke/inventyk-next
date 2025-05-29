@@ -22,10 +22,10 @@ export function TrainingContact() {
           size="lg"
           variant="outline"
           className="border-primary text-primary hover:bg-primary/10"
-          onClick={() => window.location.href = 'tel:+917020048730'}
+          onClick={() => window.open('https://wa.me/7020048730?text=Hi%20Inventyk%2C%0A%0AI%20am%20interested%20in%20your%20training%20programs.%20I%20would%20like%20to%20learn%20more%20about%20the%20courses%20and%20fees.%0A%0ARegards%2C&send=true', '_blank')}
         >
           <Phone className="w-5 h-5 mr-2" />
-          Call Us
+          Message on WhatsApp
         </Button>
       </div>
     </div>
