@@ -7,8 +7,12 @@ import Link from 'next/link';
 import { ProjectCard } from '@/components/sections/ProjectCard';
 import { TestimonialCard } from '@/components/sections/TestimonialCard';
 import { Logo } from '@/components/Logo';
-import { ScrollAnimation } from '@/components/ui/scroll-animation';
 import { TechStackCard } from '@/components/sections/TechStackCard';
+import { AdvancedScrollAnimation } from '@/components/ui/motion/AdvancedScrollAnimation';
+import { ParallaxSection } from '@/components/ui/motion/ParallaxSection';
+import { TechSpecCard } from '@/components/ui/motion/TechSpecCard';
+import { motion } from 'framer-motion';
+import { FeaturesSection } from '@/components/sections/FeaturesSection';
 
 // Assuming filenames like nextjs.svg, react.svg, etc.
 // Adjust paths if your filenames are different.
@@ -19,7 +23,6 @@ import FlutterLogo from '@/components/icons/flutter.svg';
 import PythonLogo from '@/components/icons/python.svg';
 import NodejsLogo from '@/components/icons/nodejs.svg';
 import GenkitAILogo from '@/components/icons/genkitai.svg';
-
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -95,115 +98,79 @@ const techStack = [
 export default function HomePage() {
   return (
     <>
-      <ScrollAnimation direction="down">
+      <ParallaxSection offset={100}>
         <section className="py-20 md:py-32 bg-gradient-to-br from-primary/5 via-background to-background">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-            <div className="mb-12">
-              <Logo size="large" />
-            </div>
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-primary mb-6">
-              Innovate. Integrate. Inspire.
-            </h1>
-            <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto mb-10">
-              Inventyk is your trusted partner for AI-powered digital solutions, bespoke software development, and expert tech training. We turn complex challenges into growth opportunities.
-            </p>
-            <div className="space-x-0 sm:space-x-4 space-y-4 sm:space-y-0 flex flex-col sm:flex-row items-center justify-center">
-              <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground w-full sm:w-auto">
-                <Link href="/services">Discover Our Services</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10 w-full sm:w-auto">
-                <Link href="/pricing">View Pricing & Plans</Link>
-              </Button>
+            <AdvancedScrollAnimation effect="fade" delay={0.2}>
+              <div className="mb-12">
+                <Logo size="large" />
+              </div>
+            </AdvancedScrollAnimation>
+            
+            <AdvancedScrollAnimation effect="slide-up" delay={0.4}>
+              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-primary mb-6">
+                Innovate. Integrate. Inspire.
+              </h1>
+            </AdvancedScrollAnimation>
+
+            <AdvancedScrollAnimation effect="slide-up" delay={0.6}>
+              <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto mb-10">
+                Inventyk is your trusted partner for AI-powered digital solutions, bespoke software development, and expert tech training. We turn complex challenges into growth opportunities.
+              </p>
+            </AdvancedScrollAnimation>
+
+            <AdvancedScrollAnimation effect="scale" delay={0.8}>
+              <div className="space-x-0 sm:space-x-4 space-y-4 sm:space-y-0 flex flex-col sm:flex-row items-center justify-center">
+                <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground w-full sm:w-auto">
+                  <Link href="/services">Discover Our Services</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10 w-full sm:w-auto">
+                  <Link href="/pricing">View Pricing & Plans</Link>
+                </Button>
+              </div>
+            </AdvancedScrollAnimation>
+          </div>
+        </section>
+      </ParallaxSection>
+
+      <FeaturesSection />
+
+      {/* Technology Stack Section */}
+      <ParallaxSection offset={50}>
+        <section className="py-16 bg-background">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <AdvancedScrollAnimation effect="fade">
+              <h2 className="text-3xl font-bold text-center text-primary mb-4 flex items-center justify-center">
+                <Zap className="w-10 h-10 mr-3 text-accent" />
+                Our Technology Expertise
+              </h2>
+            </AdvancedScrollAnimation>
+
+            <AdvancedScrollAnimation effect="slide-up" delay={0.2}>
+              <p className="text-center text-foreground/80 max-w-2xl mx-auto mb-12">
+                We harness the power of modern technologies and AI to build robust, scalable, and innovative solutions.
+              </p>
+            </AdvancedScrollAnimation>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 text-center">
+              {techStack.map((tech, index) => (
+                <AdvancedScrollAnimation 
+                  key={tech.name}
+                  effect="scale"
+                  delay={0.1 * index}
+                >
+                  <TechStackCard {...tech} />
+                </AdvancedScrollAnimation>
+              ))}
             </div>
           </div>
         </section>
-      </ScrollAnimation>
-
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollAnimation>
-            <h2 className="text-3xl font-bold text-center text-primary mb-12">Why Choose Inventyk?</h2>
-          </ScrollAnimation>
-          <div className="grid md:grid-cols-3 gap-8">
-            <ScrollAnimation direction="left" delay={0.2}>
-              <Card className="text-center shadow-lg">
-                <CardHeader>
-                  <Lightbulb className="w-12 h-12 mx-auto text-accent mb-4" />
-                  <CardTitle className="text-primary">Innovative Solutions</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription>We leverage AI and the latest technologies to create groundbreaking solutions tailored to your unique needs.</CardDescription>
-                </CardContent>
-              </Card>
-            </ScrollAnimation>
-
-            <ScrollAnimation direction="up" delay={0.4}>
-              <Card className="text-center shadow-lg">
-                <CardHeader>
-                  <Zap className="w-12 h-12 mx-auto text-accent mb-4" />
-                  <CardTitle className="text-primary">Rapid Development</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription>Our agile, low-code, and AI-assisted approach ensures quick turnaround times without compromising on quality.</CardDescription>
-                </CardContent>
-              </Card>
-            </ScrollAnimation>
-
-            <ScrollAnimation direction="right" delay={0.6}>
-              <Card className="text-center shadow-lg">
-                <CardHeader>
-                  <CircleCheckBig className="w-12 h-12 mx-auto text-accent mb-4" />
-                  <CardTitle className="text-primary">Client-Centric</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription>Your success is our priority. We work closely with you to understand and achieve your goals effectively.</CardDescription>
-                </CardContent>
-              </Card>
-            </ScrollAnimation>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Projects Section */}
-      <section className="py-16 bg-primary/5">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-primary mb-4 flex items-center justify-center">
-            <Briefcase className="w-10 h-10 mr-3 text-accent" />
-            Our Recent Projects
-          </h2>
-          <p className="text-center text-foreground/80 max-w-2xl mx-auto mb-12">
-            Discover how we've helped businesses like yours achieve their digital ambitions with our innovative solutions.
-          </p>
-          <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
-            {projects.map((project) => (
-              <ProjectCard key={project.title} {...project} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Technology Stack Section */}
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-primary mb-4 flex items-center justify-center">
-            <Zap className="w-10 h-10 mr-3 text-accent" />
-            Our Technology Expertise
-          </h2>
-          <p className="text-center text-foreground/80 max-w-2xl mx-auto mb-12">
-            We harness the power of modern technologies and AI to build robust, scalable, and innovative solutions.
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 text-center">
-            {techStack.map((tech) => (
-              <TechStackCard key={tech.name} {...tech} />
-            ))}
-          </div>
-        </div>
-      </section>
+      </ParallaxSection>
 
       {/* Testimonials Section */}
       <section className="py-16 bg-primary/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollAnimation>
+          <AdvancedScrollAnimation effect="fade">
             <h2 className="text-3xl font-bold text-center text-primary mb-4 flex items-center justify-center">
               <Users className="w-10 h-10 mr-3 text-accent" />
               What Our Clients Say
@@ -211,24 +178,23 @@ export default function HomePage() {
             <p className="text-center text-foreground/80 max-w-2xl mx-auto mb-12">
               Hear from businesses who have partnered with Inventyk and experienced transformative results.
             </p>
-          </ScrollAnimation>
+          </AdvancedScrollAnimation>
           <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <ScrollAnimation 
+              <AdvancedScrollAnimation 
                 key={testimonial.name} 
-                direction={index === 1 ? 'up' : index === 0 ? 'left' : 'right'}
+                effect={index === 1 ? 'slide-up' : index === 0 ? 'slide-left' : 'slide-right'}
                 delay={0.2 * (index + 1)}
-                once={false}
               >
                 <TestimonialCard {...testimonial} />
-              </ScrollAnimation>
+              </AdvancedScrollAnimation>
             ))}
           </div>
         </div>
       </section>
 
       {/* Call to Action Section */}
-      <ScrollAnimation direction="up" once={false}>
+      <AdvancedScrollAnimation effect="slide-up" delay={0.8}>
         <section className="py-16 bg-background">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl font-bold text-primary mb-6">Ready to Transform Your Business?</h2>
@@ -240,7 +206,7 @@ export default function HomePage() {
             </Button>
           </div>
         </section>
-      </ScrollAnimation>
+      </AdvancedScrollAnimation>
     </>
   );
 }
