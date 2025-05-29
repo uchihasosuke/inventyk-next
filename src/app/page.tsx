@@ -113,7 +113,7 @@ export default function HomePage() {
 
             <AdvancedScrollAnimation effect="slide-up" delay={0.6}>
               <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto mb-10">
-                Inventyk is your trusted partner for AI-powered digital solutions, bespoke software development, and expert tech training. We turn complex challenges into growth opportunities.
+                Inventyk is your trusted partner for AI-powered digital solutions, bespoke software development, and expert tech training. <span className="text-accent font-semibold">We also offer hands-on training programs to help you master the latest technologies and boost your career.</span> We turn complex challenges into growth opportunities.
               </p>
             </AdvancedScrollAnimation>
 
@@ -124,6 +124,9 @@ export default function HomePage() {
                 </Button>
                 <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10 w-full sm:w-auto">
                   <Link href="/pricing">View Pricing & Plans</Link>
+                </Button>
+                <Button asChild size="lg" className="bg-primary/10 hover:bg-primary/20 text-primary w-full sm:w-auto">
+                  <Link href="/training">Explore Training</Link>
                 </Button>
               </div>
             </AdvancedScrollAnimation>

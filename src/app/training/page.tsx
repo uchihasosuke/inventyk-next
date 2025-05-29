@@ -110,12 +110,12 @@ export default function TrainingPage() {
           </div>
           <div className="order-1 md:order-2">
             <Image
-              src="https://placehold.co/600x450.png"
-              alt="Students in a training session"
+              src="/images/training.png"
+              alt="Industrial Training & Internship"
               width={600}
               height={450}
-              className="rounded-lg shadow-xl object-cover"
-              data-ai-hint="students training class"
+              className="rounded-lg shadow-xl object-cover w-full h-auto max-w-xl"
+              priority
             />
           </div>
         </section>

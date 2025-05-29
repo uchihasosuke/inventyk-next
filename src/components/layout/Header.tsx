@@ -16,6 +16,7 @@ const navItems = [
 
 export function Header() {
   const [mounted, setMounted] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   // When mounted on client, now we can show the UI
   useEffect(() => {
@@ -26,7 +27,7 @@ export function Header() {
   if (!mounted) {
     return (
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-14 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="container flex h-18 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <div className="pl-1">
             <Logo />
           </div>
@@ -37,7 +38,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="container flex h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="pl-1">
           <Logo />
         </div>
@@ -51,7 +52,7 @@ export function Header() {
         </nav>
         {/* Mobile Menu */}
         <div className="flex items-center">
-          <Sheet>
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
               <Button variant="ghost" size="icon" className="h-9 w-9">
                 <Menu className="h-4 w-4" />
@@ -64,7 +65,12 @@ export function Header() {
               </SheetHeader>
               <div className="grid gap-2 py-6">
                 {navItems.map((item) => (
-                  <NavLink key={item.href} href={item.href} className="flex w-full items-center py-2 text-lg">
+                  <NavLink 
+                    key={item.href} 
+                    href={item.href} 
+                    className="flex w-full items-center py-2 text-lg"
+                    onClick={() => setIsOpen(false)}
+                  >
                     {item.label}
                   </NavLink>
                 ))}

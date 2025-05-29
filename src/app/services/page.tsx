@@ -23,11 +23,6 @@ const services = [
     description: 'Optimize your infrastructure with our cloud services, including migration, management, and DevOps practices for seamless operations and scalability.',
   },
   {
-    icon: Settings2, 
-    title: 'Low-Code & No-Code Solutions',
-    description: 'Accelerate your digital transformation with powerful low-code and no-code platforms. We leverage tools like Firebase Studio and FlutterFlow to build and deploy applications faster.',
-  },
-  {
     icon: SearchCheck, 
     title: 'Data Analytics & AI Integration',
     description: 'Unlock the power of your data with advanced analytics and AI-driven insights to make informed decisions and innovate faster. We integrate AI to enhance functionality and user experience.',
@@ -66,7 +61,59 @@ export default function ServicesPage() {
           </ScrollAnimation>
         ))}
       </section>
-      
+
+      {/* Core Services Grouped Tile */}
+      <ScrollAnimation direction="up">
+        <section className="py-16 bg-primary/5 rounded-lg mb-16">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-3xl font-bold text-primary mb-6">
+                  <Settings2 className="w-10 h-10 mr-3 inline-block text-accent" />
+                  Our Core Services
+                </h2>
+                <p className="text-lg text-foreground/80 mb-4">
+                  We offer a comprehensive suite of digital services designed to transform your business. Our expert team delivers innovative solutions across multiple domains to ensure your success.
+                </p>
+                <ul className="list-none space-y-3 text-lg text-foreground/80">
+                  <li className="flex items-center">
+                    <Code2 className="w-6 h-6 mr-3 text-accent flex-shrink-0" />
+                    <span className="font-semibold text-primary">Custom Software Development</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CloudCog className="w-6 h-6 mr-3 text-accent flex-shrink-0" />
+                    <span className="font-semibold text-primary">Cloud Solutions & DevOps</span>
+                  </li>
+                  <li className="flex items-center">
+                    <SearchCheck className="w-6 h-6 mr-3 text-accent flex-shrink-0" />
+                    <span className="font-semibold text-primary">Data Analytics & AI Integration</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Briefcase className="w-6 h-6 mr-3 text-accent flex-shrink-0" />
+                    <span className="font-semibold text-primary">Digital Strategy Consulting</span>
+                  </li>
+                </ul>
+                <p className="mt-6 text-foreground/80">
+                  Partner with us to leverage our expertise and drive your business forward with cutting-edge technology solutions.
+                </p>
+              </div>
+              <div className="flex justify-center items-center">
+                <div className="w-full max-w-xl h-auto">
+                  <Image 
+                    src="/images/services2.png"
+                    alt="Core Services Overview"
+                    width={600}
+                    height={400}
+                    className="rounded-lg shadow-xl object-cover w-full h-auto"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </ScrollAnimation>
+
       <ScrollAnimation direction="up">
         <section className="py-16 bg-primary/5 rounded-lg">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -85,12 +132,12 @@ export default function ServicesPage() {
               </div>
               <div>
                 <Image 
-                  src="https://placehold.co/600x400.png" 
-                  alt="AI Assisted Development" 
-                  width={600} 
-                  height={400} 
-                  className="rounded-lg shadow-xl object-cover"
-                  data-ai-hint="ai development code"
+                  src="/images/services.png"
+                  alt="AI-Assisted Development"
+                  width={600}
+                  height={400}
+                  className="rounded-lg shadow-xl object-cover w-full h-auto max-w-xl"
+                  priority
                 />
               </div>
             </div>
