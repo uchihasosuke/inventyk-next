@@ -13,7 +13,7 @@ export function TrainingContact() {
         <Button
           size="lg"
           className="bg-accent hover:bg-accent/90 text-accent-foreground"
-          onClick={() => window.location.href = 'mailto:training@inventyk.com?subject=Training Program Inquiry'}
+          onClick={() => window.location.href = 'mailto:inventyktraining@gmail.com?subject=Training Program Inquiry'}
         >
           <Mail className="w-5 h-5 mr-2" />
           Email Us
@@ -22,7 +22,7 @@ export function TrainingContact() {
           size="lg"
           variant="outline"
           className="border-primary text-primary hover:bg-primary/10"
-          onClick={() => window.location.href = 'tel:+919284089109'}
+          onClick={() => window.location.href = 'tel:+917020048730'}
         >
           <Phone className="w-5 h-5 mr-2" />
           Call Us
