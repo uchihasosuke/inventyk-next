@@ -1,19 +1,23 @@
-
 import Link from 'next/link';
 import Image from 'next/image';
 import InventykLogoAsset from '@/components/icons/inventyk-logo.svg'; // Import the SVG asset
 
-export function Logo() {
-  const displayHeight = 32; // Target rendered height for the SVG logo (Tailwind h-8)
+interface LogoProps {
+  size?: 'default' | 'large';
+}
+
+export function Logo({ size = 'default' }: LogoProps) {
+  // Target rendered height for the SVG logo based on size
+  const displayHeight = size === 'large' ? 48 : 32; // 48px for large, 32px for default
   const asset = InventykLogoAsset as { src: string; width?: number; height?: number };
 
   // Helper function to render the name part, now stacked vertically
   const renderName = (isFallback: boolean = false) => (
     <div className={`flex flex-col justify-center ${isFallback ? '' : 'ml-2'}`}>
-      <span className="font-bold text-primary text-lg leading-tight whitespace-nowrap">
+      <span className={`font-bold text-primary whitespace-nowrap ${size === 'large' ? 'text-2xl' : 'text-lg'} leading-tight`}>
         INVENTYK
       </span>
-      <span className="text-[0.65rem] leading-tight text-foreground/70 hidden sm:block whitespace-nowrap tracking-tight">
+      <span className={`leading-tight text-foreground/70 hidden sm:block whitespace-nowrap tracking-tight ${size === 'large' ? 'text-sm' : 'text-[0.65rem]'}`}>
         AI Powered Solution & Services
       </span>
     </div>
@@ -64,7 +68,7 @@ export function Logo() {
         alt="Inventyk Logo"
         width={displayWidth} 
         height={displayHeight}
-        className="shrink-0" 
+        className="shrink-0 [filter:brightness(0.85)]" // Increased brightness for better visibility
         priority // Consider adding priority if it's above the fold
       />
       {renderName()}

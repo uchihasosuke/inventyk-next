@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { CircleCheckBig, Lightbulb, Zap, Users, Briefcase } from 'lucide-react';
@@ -8,6 +7,7 @@ import Link from 'next/link';
 import { ProjectCard } from '@/components/sections/ProjectCard';
 import { TestimonialCard } from '@/components/sections/TestimonialCard';
 import { Logo } from '@/components/Logo';
+import { ScrollAnimation } from '@/components/ui/scroll-animation';
 // Removed FadeInOnScroll import
 
 // Assuming filenames like nextjs.svg, react.svg, etc.
@@ -99,60 +99,71 @@ const techStack = [
 export default function HomePage() {
   return (
     <>
-      <section className="py-20 md:py-32 bg-gradient-to-br from-primary/5 via-background to-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-          <div className="mb-8"> 
-            <Logo />
+      <ScrollAnimation direction="down">
+        <section className="py-20 md:py-32 bg-gradient-to-br from-primary/5 via-background to-background">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+            <div className="mb-12">
+              <Logo size="large" />
+            </div>
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-primary mb-6">
+              Innovate. Integrate. Inspire.
+            </h1>
+            <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto mb-10">
+              Inventyk is your trusted partner for AI-powered digital solutions, bespoke software development, and expert tech training. We turn complex challenges into growth opportunities.
+            </p>
+            <div className="space-x-0 sm:space-x-4 space-y-4 sm:space-y-0 flex flex-col sm:flex-row items-center justify-center">
+              <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground w-full sm:w-auto">
+                <Link href="/services">Discover Our Services</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10 w-full sm:w-auto">
+                <Link href="/pricing">View Pricing & Plans</Link>
+              </Button>
+            </div>
           </div>
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-primary mb-6">
-            Innovate. Integrate. Inspire.
-          </h1>
-          <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto mb-10">
-            Inventyk is your trusted partner for AI-powered digital solutions, bespoke software development, and expert tech training. We turn complex challenges into growth opportunities.
-          </p>
-          <div className="space-x-0 sm:space-x-4 space-y-4 sm:space-y-0 flex flex-col sm:flex-row items-center justify-center">
-            <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground w-full sm:w-auto">
-              <Link href="/services">Discover Our Services</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10 w-full sm:w-auto">
-              <Link href="/pricing">View Pricing & Plans</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+        </section>
+      </ScrollAnimation>
 
-      {/* Features Section */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-primary mb-12">Why Choose Inventyk?</h2>
+          <ScrollAnimation>
+            <h2 className="text-3xl font-bold text-center text-primary mb-12">Why Choose Inventyk?</h2>
+          </ScrollAnimation>
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="text-center shadow-lg">
-              <CardHeader>
-                <Lightbulb className="w-12 h-12 mx-auto text-accent mb-4" />
-                <CardTitle className="text-primary">Innovative Solutions</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription>We leverage AI and the latest technologies to create groundbreaking solutions tailored to your unique needs.</CardDescription>
-              </CardContent>
-            </Card>
-            <Card className="text-center shadow-lg">
-              <CardHeader>
-                <Zap className="w-12 h-12 mx-auto text-accent mb-4" />
-                <CardTitle className="text-primary">Rapid Development</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription>Our agile, low-code, and AI-assisted approach ensures quick turnaround times without compromising on quality.</CardDescription>
-              </CardContent>
-            </Card>
-            <Card className="text-center shadow-lg">
-              <CardHeader>
-                <CircleCheckBig className="w-12 h-12 mx-auto text-accent mb-4" />
-                <CardTitle className="text-primary">Client-Centric</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription>Your success is our priority. We work closely with you to understand and achieve your goals effectively.</CardDescription>
-              </CardContent>
-            </Card>
+            <ScrollAnimation direction="left" delay={0.2}>
+              <Card className="text-center shadow-lg">
+                <CardHeader>
+                  <Lightbulb className="w-12 h-12 mx-auto text-accent mb-4" />
+                  <CardTitle className="text-primary">Innovative Solutions</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription>We leverage AI and the latest technologies to create groundbreaking solutions tailored to your unique needs.</CardDescription>
+                </CardContent>
+              </Card>
+            </ScrollAnimation>
+
+            <ScrollAnimation direction="up" delay={0.4}>
+              <Card className="text-center shadow-lg">
+                <CardHeader>
+                  <Zap className="w-12 h-12 mx-auto text-accent mb-4" />
+                  <CardTitle className="text-primary">Rapid Development</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription>Our agile, low-code, and AI-assisted approach ensures quick turnaround times without compromising on quality.</CardDescription>
+                </CardContent>
+              </Card>
+            </ScrollAnimation>
+
+            <ScrollAnimation direction="right" delay={0.6}>
+              <Card className="text-center shadow-lg">
+                <CardHeader>
+                  <CircleCheckBig className="w-12 h-12 mx-auto text-accent mb-4" />
+                  <CardTitle className="text-primary">Client-Centric</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription>Your success is our priority. We work closely with you to understand and achieve your goals effectively.</CardDescription>
+                </CardContent>
+              </Card>
+            </ScrollAnimation>
           </div>
         </div>
       </section>
@@ -228,33 +239,44 @@ export default function HomePage() {
       {/* Testimonials Section */}
       <section className="py-16 bg-primary/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-primary mb-4 flex items-center justify-center">
-            <Users className="w-10 h-10 mr-3 text-accent" />
-            What Our Clients Say
-          </h2>
-          <p className="text-center text-foreground/80 max-w-2xl mx-auto mb-12">
-            Hear from businesses who have partnered with Inventyk and experienced transformative results.
-          </p>
+          <ScrollAnimation>
+            <h2 className="text-3xl font-bold text-center text-primary mb-4 flex items-center justify-center">
+              <Users className="w-10 h-10 mr-3 text-accent" />
+              What Our Clients Say
+            </h2>
+            <p className="text-center text-foreground/80 max-w-2xl mx-auto mb-12">
+              Hear from businesses who have partnered with Inventyk and experienced transformative results.
+            </p>
+          </ScrollAnimation>
           <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial) => (
-              <TestimonialCard key={testimonial.name} {...testimonial} />
+            {testimonials.map((testimonial, index) => (
+              <ScrollAnimation 
+                key={testimonial.name} 
+                direction={index === 1 ? 'up' : index === 0 ? 'left' : 'right'}
+                delay={0.2 * (index + 1)}
+                once={false}
+              >
+                <TestimonialCard {...testimonial} />
+              </ScrollAnimation>
             ))}
           </div>
         </div>
       </section>
 
       {/* Call to Action Section */}
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-primary mb-6">Ready to Transform Your Business?</h2>
-          <p className="text-lg text-foreground/80 max-w-xl mx-auto mb-8">
-            Let's discuss how Inventyk can help you achieve new heights of success with our expert services and training.
-          </p>
-          <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-            <Link href="/pricing#contact-us-section">Schedule a Consultation</Link>
-          </Button>
-        </div>
-      </section>
+      <ScrollAnimation direction="up" once={false}>
+        <section className="py-16 bg-background">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl font-bold text-primary mb-6">Ready to Transform Your Business?</h2>
+            <p className="text-lg text-foreground/80 max-w-xl mx-auto mb-8">
+              Let's discuss how Inventyk can help you achieve new heights of success with our expert services and training.
+            </p>
+            <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
+              <Link href="/pricing#contact-us-section">Schedule a Consultation</Link>
+            </Button>
+          </div>
+        </section>
+      </ScrollAnimation>
     </>
   );
 }
