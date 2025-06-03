@@ -55,6 +55,7 @@ export default function RootLayout({
             gtag('config', 'G-LM4VFXGR30');
           `}
         </Script>
+        <Script src="https://server.fillout.com/embed/v1/" strategy="afterInteractive" />
       </head>
       <body className={cn(
         "min-h-screen bg-background font-sans antialiased",
