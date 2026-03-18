@@ -27,7 +27,7 @@ export function Footer() {
         </div>
 
         <div className="text-sm text-muted-foreground space-y-2 mb-6">
-          <a href="mailto:inventykaipoweredsolution@gmail.com" className="flex items-center justify-center hover:text-primary transition-colors">
+          <a href="mailto:inventyk@gmail.com" className="flex items-center justify-center hover:text-primary transition-colors">
             <Mail className="h-4 w-4 mr-2" />
             inventykaipoweredsolution@gmail.com
           </a>
