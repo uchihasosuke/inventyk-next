@@ -84,11 +84,11 @@ export default function ContactPage() {
                 </p>
                 <p className="flex items-center">
                   <Phone className="w-5 h-5 mr-3 text-accent flex-shrink-0" />
-                  <span>(555) 123-4567</span>
+                  <span>+919226366202</span>
                 </p>
                 <p className="flex items-center">
                   <Mail className="w-5 h-5 mr-3 text-accent flex-shrink-0" />
-                  <span>inventykaipoweredsolution@gmail.com</span>
+                  <span>inventyk@gmail.com</span>
                 </p>
               </div>
             </CardContent>
