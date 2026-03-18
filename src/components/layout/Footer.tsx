@@ -29,7 +29,7 @@ export function Footer() {
         <div className="text-sm text-muted-foreground space-y-2 mb-6">
           <a href="mailto:inventyk@gmail.com" className="flex items-center justify-center hover:text-primary transition-colors">
             <Mail className="h-4 w-4 mr-2" />
-            inventykaipoweredsolution@gmail.com
+            Mail us
           </a>
           <a href="https://t.me/INVENTYK" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center hover:text-primary transition-colors">
             <Phone className="h-4 w-4 mr-2" />
