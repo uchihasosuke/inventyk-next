@@ -13,7 +13,7 @@ export function TrainingContact() {
         <Button
           size="lg"
           className="bg-accent hover:bg-accent/90 text-accent-foreground"
-          onClick={() => window.location.href = 'mailto:inventyktraining@gmail.com?subject=Training Program Inquiry'}
+          onClick={() => window.location.href = 'mailto:inventyk@gmail.com?subject=Training Program Inquiry'}
         >
           <Mail className="w-5 h-5 mr-2" />
           Email Us
