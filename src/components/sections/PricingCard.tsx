@@ -76,7 +76,7 @@ export function PricingCard({
 
   const handleEmailClick = () => {
     const { subject, body } = createEmailTemplate({ title, price, pricePeriod, features });
-    const mailtoLink = `mailto:inventykaipoweredsolution@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailtoLink = `mailto:inventyk@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailtoLink;
   };
 
