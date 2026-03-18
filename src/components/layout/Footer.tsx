@@ -37,7 +37,7 @@ export function Footer() {
           </a>
           <p className="flex items-center justify-center">
             <MapPin className="h-4 w-4 mr-2" />
-            Solapur - 413006, India
+            Pune - 411048, India
           </p>
         </div>
 
